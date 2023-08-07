@@ -1,12 +1,12 @@
-import { useState } from "react"
+import { useState } from "react";
 
-const LoginPage = () => {
+const LoginForm = () => {
 
     const [username, setUsername] = useState('');
 
-    const handleChange = (event) => {
+    const handleChange = (event) => { 
         setUsername(event.target.value);
-    };
+     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -14,13 +14,15 @@ const LoginPage = () => {
         setUsername('');
     };
 
-    return (
+  return (
     <>
         <h1>Bienvenue chez nous !</h1>
+        <br />
         <h2>Connectez-vous</h2>
 
         <form onSubmit={handleSubmit}>
             <input 
+                type="text"
                 name="username" 
                 placeholder="Entrez votre prénom..." 
                 value={username}
@@ -30,6 +32,6 @@ const LoginPage = () => {
         </form>
     </>
   )
-}
+};
 
-export default LoginPage
+export default LoginForm;
