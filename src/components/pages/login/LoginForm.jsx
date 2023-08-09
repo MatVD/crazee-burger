@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
 
@@ -10,8 +11,11 @@ const LoginForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert(`Bonjour ${username}`);
-        setUsername('');
+        try {
+            setUsername('');
+        } catch (error) {
+            throw new Error(`${error} : Veuillez entrer un nom svp`)
+        }
     };
 
   return (
@@ -27,8 +31,12 @@ const LoginForm = () => {
                 placeholder="Entrez votre prénom..." 
                 value={username}
                 onChange={handleChange}
-                required/>
-            <button>Accéder à votre espace</button>
+                required
+            />
+
+            <Link to='/order' state={{username}} >
+                <button>Accéder à votre espace</button>
+            </Link>
         </form>
     </>
   )
