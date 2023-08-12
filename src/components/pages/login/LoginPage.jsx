@@ -1,21 +1,31 @@
-import Logo from "../../logo/Logo";
+import Logo from "../../reusable-ui/Logo";
 import LoginForm from "./LoginForm";
 import styled from "styled-components";
 
 const LoginPage = () => {
   return (
-    <Wrapper>
-      <Logo width='250px' height='150px' />
-      <LoginForm />
-    </Wrapper>
+    <ImageContainer>
+      <Wrapper>
+        <Logo />
+        <LoginForm />
+      </Wrapper>
+    </ImageContainer>
   );
 };
 
-const Wrapper = styled.div`
-  width: 100%;
+
+const ImageContainer = styled.div`
   height: 100vh;
-  background: url("assets/F03 burger-background.webp") no-repeat center;
-  background-size: 100%;
+  background: url("src/assets/F03 burger-background.webp") no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
+
+const Wrapper = styled.div`
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.379) no-repeat;
+  background-size: cover;
+  background-position: center;
 
   display: flex;
   flex-direction: column;
