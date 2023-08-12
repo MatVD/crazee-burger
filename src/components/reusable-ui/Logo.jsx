@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { theme } from "../../assets/theme";
 
 const Logo = () => {
   return (
@@ -16,26 +17,28 @@ const Logo = () => {
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  transform: scale(2.5);
 
   h1 {
-    color: #ffa01b;
+    display: inline;
     text-align: center;
-    font-family: Amatic SC;
-    font-size: 110px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 115px; /* 104.545% */
-    letter-spacing: 1.5px;
+    color: ${theme.colors.primary};
+    font-size: ${theme.fonts.size.P4};
+    line-height: 1em;
+    font-weight: ${theme.fonts.weights.bold};
     text-transform: uppercase;
-    margin: 0 20px;
+    letter-spacing: 1.5px;
+    font-family: "Amatic SC", cursive;
   }
 
   img {
-    width: 250px;
-    height: 150px;
+    object-fit: contain;
+    object-position: center;
+    height: 60px;
+    width: 80px; // for Safari and Firefox
+    margin: 0 ${theme.gridUnit / 2}px;
   }
 `;
-
 
 export default Logo;

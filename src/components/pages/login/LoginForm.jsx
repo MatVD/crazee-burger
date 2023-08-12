@@ -5,6 +5,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import styled from "styled-components";
 import Input from "../../reusable-ui/Input";
 import Button from "../../reusable-ui/Button";
+import { theme } from "../../../assets/theme";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -46,9 +47,9 @@ const WrapperForm = styled.div`
   margin-bottom: 35px;
 
   hr {
-    border: "1px solid #F56A2C",
-    background: "#F56A2C",
-    height: "3px",
+    border: "1px solid ${theme.colors.primary}";
+    background: ${theme.colors.primary};
+    height: "3px";
   }
 
   form {
@@ -56,19 +57,20 @@ const WrapperForm = styled.div`
     flex-direction: column;
   }
 
-  h1, h2 {
-    color: #fff;
+  h1,
+  h2 {
+    color: ${theme.colors.white};
     text-align: center;
     font-family: Amatic SC;
-    font-size: 48px;
+    font-size: ${theme.fonts.size.P5};
     font-style: normal;
-    font-weight: 700;
+    font-weight: ${theme.fonts.weights.bold};
     line-height: 61px; /* 127.083% */
     margin: 10px 0 30px 0;
   }
 
   h2 {
-    font-size: 36px;
+    font-size: ${theme.fonts.size.P4};
     line-height: 46px; /* 127.778% */
     margin: 20px 0;
   }

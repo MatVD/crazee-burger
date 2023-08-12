@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { theme } from "../../assets/theme";
 
 const Button = ({ label, icon }) => {
   return (
@@ -15,21 +16,21 @@ const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  gap: 9px;
-  border-radius: 5px;
-  border: 1px solid #ff9f1b;
-  background: #ff9f1b;
-  color: white;
+  gap: ${theme.spacing.xs};
+  border-radius: ${theme.borderRadius.round};
+  border: 1px solid ${theme.colors.primary};
+  background: ${theme.colors.primary};
+  color: ${theme.colors.white};
   font-family: Arial;
   font-style: normal;
-  font-weight: 700;
+  font-weight: ${theme.fonts.weights.bold};
   line-height: 15px; /* 100% */
   padding: 18px 106.203px;
   margin-top: 18px;
   &:hover {
-    border: 1px solid #ff9f1b;
-    background: #fff;
-    color: #ff9f1b;
+    border: 1px solid ${theme.colors.primary};
+    background: ${theme.colors.white};
+    color: ${theme.colors.primary};
     cursor: pointer;
   }
 `;
