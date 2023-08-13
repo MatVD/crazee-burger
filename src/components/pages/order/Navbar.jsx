@@ -31,7 +31,7 @@ const StyledNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 70px 0px 20px;
+  padding: 0 70px 0 20px;
 
   .wrapperLogo {
     cursor: pointer;
@@ -42,7 +42,7 @@ const StyledNav = styled.nav`
     align-items: center;
 
     font-family: Open Sans;
-    color: #747b91;
+    color: ${theme.colors.greyBlue};
 
     div {
       display: flex;
@@ -56,13 +56,13 @@ const StyledNav = styled.nav`
     }
 
     a {
-      font-size: 10px;
+      font-size: ${theme.fonts.size.XXS};
       font-style: normal;
-      font-weight: 400;
+      font-weight: ${theme.fonts.weights.regular};
       line-height: 14px; /* 140% */
       text-decoration: none;
       &:visited {
-        color: #747b91;
+        color: ${theme.colors.greyBlue};
       }
       &:hover {
         text-decoration: underline;
@@ -72,7 +72,7 @@ const StyledNav = styled.nav`
 
     .personCicleIcon {
       transform: scale(2);
-      margin-left: 15px;
+      margin-left: ${theme.spacing.sm};
       color: ${theme.colors.greyDark};
     }
   }
