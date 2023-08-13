@@ -1,13 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import Logo from "../../reusable-ui/Logo";
 import { styled } from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { theme } from "../../../assets/theme";
 
 export const Navbar = ({ username }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/");
+  };
+
   return (
     <StyledNav>
-      <Logo scale={1} />
+      <div onClick={handleClick} className='wrapperLogo'>
+        <Logo scale={1} />
+      </div>
       <div className='wrapperUserIdentifier'>
         <div>
           <p>
@@ -28,6 +36,10 @@ const StyledNav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0px 70px 0px 20px;
+
+  .wrapperLogo {
+    cursor: pointer;
+  }
 
   .wrapperUserIdentifier {
     display: flex;
