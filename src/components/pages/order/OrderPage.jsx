@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Navbar } from "./Navbar";
+import { Main } from "./Main";
 import { styled } from "styled-components";
 import { theme } from "../../../assets/theme";
 
@@ -7,35 +8,29 @@ const OrderPage = () => {
   const { username } = useParams();
 
   return (
-    <Background>
-      <MainContainer>
+    <OrderPageStyled>
+      <div className="container">
         <Navbar username={username} />
-        <main></main>
-      </MainContainer>
-    </Background>
+        <Main />
+      </div>
+    </OrderPageStyled>
   );
 };
 
-const Background = styled.div`
+const OrderPageStyled = styled.div`
   height: 100vh;
   background: ${theme.colors.primary};
 
   display: flex;
   justify-content: center;
   align-items: center;
-`;
 
-const MainContainer = styled.div`
-  width: 1200px;
-  height: 600px;
-  overflow: hidden;
-  background: ${theme.colors.background_white};
-  border-radius: ${theme.borderRadius.extraRound};
-
-  main {
-    height: 100%;
-    box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-    border-radius: 0px 0px 15px 15px;
+  .container {
+    width: 1400px;
+    height: 900px;
+    overflow: hidden;
+    background: ${theme.colors.background_white};
+    border-radius: ${theme.borderRadius.extraRound};
   }
 `;
 

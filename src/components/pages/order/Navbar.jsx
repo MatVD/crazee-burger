@@ -8,7 +8,7 @@ export const Navbar = ({ username }) => {
   const refresh = () => window.location.reload(true);
 
   return (
-    <StyledNav>
+    <NavbarStyled>
       <div onClick={refresh} className='wrapperLogo'>
         <Logo scale={1} />
       </div>
@@ -21,11 +21,11 @@ export const Navbar = ({ username }) => {
         </div>
         <BsPersonCircle className='personCicleIcon' />
       </div>
-    </StyledNav>
+    </NavbarStyled>
   );
 };
 
-const StyledNav = styled.nav`
+const NavbarStyled = styled.nav`
   width: "1OO%";
   height: 98px;
   display: flex;
@@ -72,7 +72,7 @@ const StyledNav = styled.nav`
 
     .personCicleIcon {
       transform: scale(2);
-      margin-left: ${theme.spacing.sm};
+      margin-left: ${theme.spacing.md};
       color: ${theme.colors.greyDark};
     }
   }
