@@ -10,7 +10,7 @@ const OrderPage = () => {
     <Background>
       <MainContainer>
         <Navbar username={username} />
-        <main>C&apos;est la partie main</main>
+        <main></main>
       </MainContainer>
     </Background>
   );
@@ -26,13 +26,14 @@ const Background = styled.div`
 `;
 
 const MainContainer = styled.div`
-  width: 1100px;
+  width: 1200px;
   height: 600px;
+  overflow: hidden;
   background: ${theme.colors.background_white};
   border-radius: ${theme.borderRadius.extraRound};
 
   main {
-    height: 80%;
+    height: 100%;
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
     border-radius: 0px 0px 15px 15px;
   }

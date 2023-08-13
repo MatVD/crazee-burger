@@ -1,19 +1,15 @@
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../../reusable-ui/Logo";
 import { styled } from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { theme } from "../../../assets/theme";
 
 export const Navbar = ({ username }) => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/");
-  };
+  const refresh = () => window.location.reload(true);
 
   return (
     <StyledNav>
-      <div onClick={handleClick} className='wrapperLogo'>
+      <div onClick={refresh} className='wrapperLogo'>
         <Logo scale={1} />
       </div>
       <div className='wrapperUserIdentifier'>
