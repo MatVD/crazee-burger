@@ -1,12 +1,13 @@
 import { styled } from "styled-components";
 import { theme } from "../../assets/theme";
+import logo from "../../assets/logo-orange.png";
 
-const Logo = () => {
+const Logo = ({ scale }) => {
   return (
-    <LogoWrapper>
+    <LogoWrapper scale={scale}>
       <h1>CRAZEE</h1>
       <img
-        src='src/assets/F03 logo-orange.png'
+        src={logo}
         alt='Image représentant un hamburger'
       />
       <h1>BURGER</h1>
@@ -17,8 +18,9 @@ const Logo = () => {
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
-  transform: scale(2.5);
+  transform: scale(
+    ${(props) => props.scale}
+  ); // la valeur de scale est passer par une props
 
   h1 {
     display: inline;
