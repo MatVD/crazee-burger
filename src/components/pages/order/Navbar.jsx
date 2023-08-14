@@ -3,11 +3,10 @@ import NavbarRigthSide from "./NavbarRigthSide";
 import NavbarLeftSide from "./NavbarLeftSide";
 
 export const Navbar = ({ username }) => {
-
   return (
     <NavbarStyled>
       <NavbarLeftSide />
-      <NavbarRigthSide username={username}/>
+      <NavbarRigthSide username={username} />
     </NavbarStyled>
   );
 };

@@ -9,7 +9,7 @@ const OrderPage = () => {
 
   return (
     <OrderPageStyled>
-      <div className="container">
+      <div className='container'>
         <Navbar username={username} />
         <Main />
       </div>
@@ -28,7 +28,9 @@ const OrderPageStyled = styled.div`
   .container {
     width: 1400px;
     height: 95vh;
-    
+
+    display: flex; // Why display flex , See second child <Main /> with flex 1
+    flex-direction: column; 
     background: ${theme.colors.background_white};
     border-radius: ${theme.borderRadius.extraRound};
   }
