@@ -27,8 +27,8 @@ const OrderPageStyled = styled.div`
 
   .container {
     width: 1400px;
-    height: 900px;
-    overflow: hidden;
+    height: 95vh;
+    
     background: ${theme.colors.background_white};
     border-radius: ${theme.borderRadius.extraRound};
   }

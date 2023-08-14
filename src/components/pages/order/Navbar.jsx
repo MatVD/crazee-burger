@@ -14,7 +14,7 @@ export const Navbar = ({ username }) => {
 
 const NavbarStyled = styled.nav`
   width: "1OO%";
-  height: 98px;
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
