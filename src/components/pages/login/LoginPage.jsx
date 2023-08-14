@@ -1,22 +1,22 @@
 import Logo from "../../reusable-ui/Logo";
 import LoginForm from "./LoginForm";
 import styled from "styled-components";
+import Burgerbackground from "../../../assets/burger-background.webp";
 
 const LoginPage = () => {
   return (
-    <ImageContainer>
+    <ImageContainer >
       <Wrapper>
-        <Logo />
+        <Logo scale={2.5} />
         <LoginForm />
       </Wrapper>
     </ImageContainer>
   );
 };
 
-
 const ImageContainer = styled.div`
   height: 100vh;
-  background: url("src/assets/F03 burger-background.webp") no-repeat;
+  background: url(${Burgerbackground}) no-repeat;
   background-size: cover;
   background-position: center;
 `;

@@ -44,12 +44,13 @@ const LoginForm = () => {
 const WrapperForm = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 35px;
+  margin: 40px 0 35px 0;
 
   hr {
     border: "1px solid ${theme.colors.primary}";
-    background: ${theme.colors.primary};
+    background: "${theme.colors.primary}";
     height: "3px";
+    width: 100%;
   }
 
   form {
