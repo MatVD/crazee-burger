@@ -1,18 +1,18 @@
 import { styled } from "styled-components";
 import { Card } from "../../reusable-ui/Card";
 import { theme } from "../../../assets/theme/index";
+import { fakeMenu2 } from "../../../fakeData/fakeMenu";
 
 export const Main = () => {
+
+  console.log(fakeMenu2[0]);
   return (
     <MainStyled>
-      <Card className='card1' name='card1' />
-      <Card className='card2' name='card2' />
-      <Card className='card3' name='card3' />
-      <Card className='card4' name='card4' />
-      <Card className='card5' name='card5' />
-      <Card className='card6' name='card6' />
-      <Card className='card7' name='card7' />
-      <Card className='card8' name='card8' />
+      <Card
+        imageSource={fakeMenu2[0].imageSource}
+        title={fakeMenu2[0].title}
+        price={fakeMenu2[0].price}
+      />
     </MainStyled>
   );
 };

@@ -35,6 +35,7 @@ const LoginForm = () => {
         <Button
           label='Accéder à mon espace'
           icon={<MdOutlineKeyboardArrowRight />}
+          className='CTAbutton'
         />
       </form>
     </WrapperForm>
@@ -74,6 +75,13 @@ const WrapperForm = styled.div`
     font-size: ${theme.fonts.size.P4};
     line-height: 46px; /* 127.778% */
     margin: 20px 0;
+  }
+
+  .CTAbutton {
+    width: 100%;
+    height: 53px;
+    padding: 18px 106.203px;
+    margin-top: 18px;
   }
 `;
 
