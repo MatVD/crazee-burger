@@ -42,7 +42,6 @@ const CardStyled = styled.div`
 
   div.wrapperImage {
     margin: 0 auto;
-    background-color: red;
     width: 200px;
     height: 145px;
   }
@@ -59,7 +58,7 @@ const CardStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 5px;
+    margin-top: 10px;
 
     p {
       color: ${theme.colors.primary};

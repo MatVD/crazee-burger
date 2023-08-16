@@ -5,14 +5,16 @@ import { fakeMenu2 } from "../../../fakeData/fakeMenu";
 
 export const Main = () => {
 
-  console.log(fakeMenu2[0]);
   return (
     <MainStyled>
-      <Card
-        imageSource={fakeMenu2[0].imageSource}
-        title={fakeMenu2[0].title}
-        price={fakeMenu2[0].price}
-      />
+      {fakeMenu2.map((menu) => (
+        <Card
+          key={menu.id}
+          imageSource={menu.imageSource}
+          title={menu.title}
+          price={menu.price}
+        />
+      ))}
     </MainStyled>
   );
 };
