@@ -10,9 +10,9 @@ export const Main = () => {
       <Card className='card3' name='card3' />
       <Card className='card4' name='card4' />
       <Card className='card5' name='card5' />
-      <Card className='car6d' name='card6' />
-      <Card className='ca7rd' name='card7' />
-      <Card className='c8ard' name='card8' />
+      <Card className='card6' name='card6' />
+      <Card className='card7' name='card7' />
+      <Card className='card8' name='card8' />
     </MainStyled>
   );
 };
@@ -23,10 +23,10 @@ const MainStyled = styled.div`
   border-radius: 0px 0px 15px 15px;
   background: ${theme.colors.white};
   padding: 50px 50px 150px;
+  overflow: scroll;
 
   display: grid;
-  grid-template-rows: 50% 50%;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 60px;
-
 `;
