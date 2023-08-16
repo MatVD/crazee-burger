@@ -10,7 +10,7 @@ const Button = ({ label, icon }) => {
 };
 
 const StyledButton = styled.button`
-  width: 400px;
+  width: 100%;
   height: 53px;
   display: flex;
   justify-content: center;
