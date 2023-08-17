@@ -1,10 +1,9 @@
 import { styled } from "styled-components";
-import { Card } from "../../reusable-ui/Card";
-import { theme } from "../../../assets/theme/index";
-import { fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { Card } from "../card/Card";
+import { theme } from "../../../../assets/theme/index";
+import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 
 export const Main = () => {
-
   return (
     <MainStyled>
       {fakeMenu2.map((menu) => (

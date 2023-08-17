@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import Logo from "../../reusable-ui/Logo";
+import Logo from "../../../reusable-ui/Logo";
 
 const NavbarLeftSide = () => {
   const refresh = () => window.location.reload(true);

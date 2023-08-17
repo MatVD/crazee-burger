@@ -1,7 +1,8 @@
 import { BsPersonCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { theme } from "../../../assets/theme";
+
 import { styled } from "styled-components";
+import { theme } from "../../../../assets/theme";
 
 const NavbarRigthSide = ({ username }) => {
   return (
