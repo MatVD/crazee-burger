@@ -10,13 +10,15 @@ const TopCard = ({ image, title }) => {
 
 const TopCardStyled = styled.div`
   margin: 0 auto;
-  width: 190px;
+  padding: 10px;
+  width: 200px;
   height: 145px;
 
   display: flex;
   justify-content: center;
 
   img {
+    height: 100%;
     height: 100%;
   }
 `;
