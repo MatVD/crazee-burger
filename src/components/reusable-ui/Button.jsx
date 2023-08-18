@@ -1,17 +1,15 @@
 import { styled } from "styled-components";
 import { theme } from "../../assets/theme";
 
-const Button = ({ label, icon }) => {
+const Button = ({ label, icon, className }) => {
   return (
-    <StyledButton>
+    <StyledButton className={className}>
       {label} {icon && icon}
     </StyledButton>
   );
 };
 
 const StyledButton = styled.button`
-  width: 400px;
-  height: 53px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,8 +23,6 @@ const StyledButton = styled.button`
   font-style: normal;
   font-weight: ${theme.fonts.weights.bold};
   line-height: 15px; /* 100% */
-  padding: 18px 106.203px;
-  margin-top: 18px;
   &:hover {
     border: 1px solid ${theme.colors.primary};
     background: ${theme.colors.white};
