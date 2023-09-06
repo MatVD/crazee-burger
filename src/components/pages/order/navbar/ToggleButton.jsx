@@ -12,12 +12,12 @@ export default function ToggleButton({
       <input
         type="checkbox"
         className="toggle"
-        id="rounded"
+        id="adminButton"
         checked={isChecked}
         onChange={onToggle}
       />
       <label
-        htmlFor="rounded"
+        htmlFor="adminButton"
         className="rounded"
         data-checked={labelIfChecked}
         data-unchecked={labelIfUnchecked}
