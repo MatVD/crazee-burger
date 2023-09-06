@@ -1,23 +1,23 @@
 import styled from "styled-components";
-import { theme } from "../../../../assets/theme";
+import { theme } from "../../assets/theme";
 
 export default function ToggleButton({
   isChecked,
   onToggle,
-  labelIfChecked = "DÉSACTIVER LE MODE ADMIN",
-  labelIfUnchecked = "ACTIVER LE MODE ADMIN",
+  labelIfChecked = "Fermer",
+  labelIfUnchecked = "Ouvrir",
 }) {
   return (
     <ToggleButtonStyled>
       <input
         type="checkbox"
         className="toggle"
-        id="adminButton"
+        id="rounded"
         checked={isChecked}
         onChange={onToggle}
       />
       <label
-        htmlFor="adminButton"
+        htmlFor="rounded"
         className="rounded"
         data-checked={labelIfChecked}
         data-unchecked={labelIfUnchecked}
