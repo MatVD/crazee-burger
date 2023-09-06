@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 
 import { styled } from "styled-components";
 import { theme } from "../../../../assets/theme";
+import ToggleButton from "./ToggleButton";
 
 const NavbarRigthSide = ({ username }) => {
   return (
     <NavbarRigthSideStyled>
+      <ToggleButton />
       <div className="userIdentifier">
         <p>
           Hey, <span>{username}</span>
         </p>
-        <Link to='/'>Se déconnecter</Link>
+        <Link to="/">Se déconnecter</Link>
       </div>
-      <BsPersonCircle className='personCicleIcon' />
+      <BsPersonCircle className="personCicleIcon" />
     </NavbarRigthSideStyled>
   );
 };
@@ -27,25 +29,26 @@ const NavbarRigthSideStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: end;
-  }
+    margin-left: 50px;
 
-  span {
-    color: ${theme.colors.primary};
-    font-weight: ${theme.fonts.weights.bold};
-  }
-
-  a {
-    font-size: ${theme.fonts.size.XXS};
-    font-style: normal;
-    font-weight: ${theme.fonts.weights.regular};
-    line-height: 14px; /* 140% */
-    text-decoration: none;
-    &:visited {
-      color: ${theme.colors.greyBlue};
+    span {
+      color: ${theme.colors.primary};
+      font-weight: ${theme.fonts.weights.bold};
     }
-    &:hover {
-      text-decoration: underline;
-      text-underline-offset: 4px;
+
+    a {
+      font-size: ${theme.fonts.size.XXS};
+      font-style: normal;
+      font-weight: ${theme.fonts.weights.regular};
+      line-height: 14px; /* 140% */
+      text-decoration: none;
+      &:visited {
+        color: ${theme.colors.greyBlue};
+      }
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
     }
   }
 

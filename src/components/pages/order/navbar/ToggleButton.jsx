@@ -1,12 +1,11 @@
-import React from "react"
-import styled from "styled-components/macro"
-import { theme } from "../../theme"
+import styled from "styled-components";
+import { theme } from "../../../../assets/theme";
 
 export default function ToggleButton({
   isChecked,
   onToggle,
-  labelIfChecked = "Fermer",
-  labelIfUnchecked = "Ouvrir",
+  labelIfChecked = "DÉSACTIVER LE MODE ADMIN",
+  labelIfUnchecked = "ACTIVER LE MODE ADMIN",
 }) {
   return (
     <ToggleButtonStyled>
@@ -24,7 +23,7 @@ export default function ToggleButton({
         data-unchecked={labelIfUnchecked}
       ></label>
     </ToggleButtonStyled>
-  )
+  );
 }
 
 const ToggleButtonStyled = styled.div`
@@ -131,4 +130,4 @@ const ToggleButtonStyled = styled.div`
       background-color: ${theme.colors.primary};
     }
   }
-`
+`;
