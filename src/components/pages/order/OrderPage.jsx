@@ -3,6 +3,7 @@ import { Navbar } from "./navbar/Navbar";
 import { Main } from "./main/Main";
 import { styled } from "styled-components";
 import { theme } from "../../../assets/theme";
+import PanelAdmin from "./panelAdmin/PanelAdmin";
 
 const OrderPage = () => {
   const { username } = useParams();
@@ -12,6 +13,7 @@ const OrderPage = () => {
       <div className='container'>
         <Navbar username={username} />
         <Main />
+        <PanelAdmin />
       </div>
     </OrderPageStyled>
   );
