@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { theme } from "../../assets/theme";
 
-export default function AdminButton({ icon, label = "" }) {
-  const [isChecked, setIsChecked] = useState(false);
-
+export default function AdminButton({ icon, isChecked, setIsChecked }) {
+  
   const handleClick = () => {
     setIsChecked(!isChecked);
   }
@@ -18,14 +18,13 @@ export default function AdminButton({ icon, label = "" }) {
     light : {
       background: "white",
       color: "black",
-      border: "1px solid #E4E5E9"
+      border: "1px solid #E4E5E9",
     }
   }
 
   return (
     <AdminButtonStyled isChecked={isChecked} theme={theme} onClick={handleClick}>
-      {icon}
-      {label}
+      {isChecked ? <FiChevronDown /> : <FiChevronUp />}
     </AdminButtonStyled>
   );
 }
@@ -43,7 +42,6 @@ const AdminButtonStyled = styled.button`
   margin-left: 1px;
   // border: 1px solid #E4E5E9;
   box-shadow: ${theme.shadows.subtle};
-  
 
   ${(props) => props.isChecked ? props.theme.light : props.theme.dark };
 

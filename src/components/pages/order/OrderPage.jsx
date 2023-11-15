@@ -10,7 +10,7 @@ const OrderPage = () => {
 
   return (
     <OrderPageStyled>
-      <div className='container'>
+      <div className="container">
         <Navbar username={username} />
         <Main />
         <PanelAdmin />
@@ -28,11 +28,12 @@ const OrderPageStyled = styled.div`
   align-items: center;
 
   .container {
+    position: relative; // Nécessaire pour <PanelAdmin /> en absolute
     width: 1400px;
     height: 95vh;
 
-    display: flex; // Why display flex , See second child <Main /> with flex 1
-    flex-direction: column; 
+    display: flex; // Nécessaire pour <Main /> avec flex 1
+    flex-direction: column;
     background: ${theme.colors.background_white};
     border-radius: ${theme.borderRadius.extraRound};
   }

@@ -1,17 +1,18 @@
 import styled from "styled-components";
 import AdminButton from "../../../reusable-ui/AdminButton";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import AdminToggleButton from "../../../reusable-ui/AdminToggleButton";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import { useState } from "react";
+import { theme } from "../../../../assets/theme";
 
 export default function PanelAdmin() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <PanelAdminStyled>
+    <PanelAdminStyled isOpen={isOpen}>
       <div className="buttons">
-        <AdminButton icon={isOpen ? <FiChevronUp /> : <FiChevronDown />} />
+        <AdminToggleButton isChecked={isOpen} setIsChecked={setIsOpen} />
         <AdminButton icon={<AiOutlinePlus />} label="Ajouter un produit" />
         <AdminButton icon={<MdModeEditOutline />} label="Modifier un produit" />
       </div>
@@ -21,22 +22,26 @@ export default function PanelAdmin() {
 }
 
 const PanelAdminStyled = styled.div`
-  position: relative;
-  border-top: 2px solid #E4E5E9;;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: ${theme.shadows.subtle};
+  
 
   .buttons {
     position: absolute;
-    top: -45px;
+    top: -44px;
     left: 70px;
     display: flex;
     height: 0;
-    box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.10);
-
   }
 
   div.panel {
-    display: flex;
+    position: relative;
+    display: ${(props) => (props.isOpen ? "flex" : "none")};
     height: 250px;
     background-color: #fff;
+    border-radius: 0 0 15px 15px;
   }
 `;
