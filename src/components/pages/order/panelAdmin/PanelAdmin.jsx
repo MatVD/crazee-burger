@@ -21,18 +21,22 @@ export default function PanelAdmin() {
 }
 
 const PanelAdminStyled = styled.div`
-  background-color: rgba(255, 255, 255, 0);
+  position: relative;
+  border-top: 2px solid #E4E5E9;;
 
-  div.buttons {
-    background-color: gray;
+  .buttons {
+    position: absolute;
+    top: -45px;
+    left: 70px;
     display: flex;
-    height: 44px;
-    margin-left: 71px;
+    height: 0;
+    box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.10);
+
   }
 
   div.panel {
-    background-color: red;
     display: flex;
     height: 250px;
+    background-color: #fff;
   }
 `;

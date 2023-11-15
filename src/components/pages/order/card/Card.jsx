@@ -24,5 +24,4 @@ const CardStyled = styled.div`
   box-shadow: -8px 8px 20px 0 rgba(0, 0, 0, 0.2);
   padding: 50px 20px 10px 20px;
   border-radius: ${theme.borderRadius.extraRound};
-  background: ${theme.colors.background_white};
 `;
