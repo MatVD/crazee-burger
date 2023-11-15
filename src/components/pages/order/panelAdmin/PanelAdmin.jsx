@@ -5,14 +5,17 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import { useState } from "react";
 import { theme } from "../../../../assets/theme";
+import { useContext } from "react";
+import AdminContext from "../../../../stores/AdminContext";
 
 export default function PanelAdmin() {
+  const { isAdminMode } = useContext(AdminContext);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <PanelAdminStyled isOpen={isOpen}>
+    <PanelAdminStyled isOpen={isOpen} isAdminMode={isAdminMode}>
       <div className="buttons">
-        <AdminToggleButton isChecked={isOpen} setIsChecked={setIsOpen} />
+        <AdminToggleButton isOpen={isOpen} setIsOpen={setIsOpen} />
         <AdminButton icon={<AiOutlinePlus />} label="Ajouter un produit" />
         <AdminButton icon={<MdModeEditOutline />} label="Modifier un produit" />
       </div>
@@ -22,12 +25,12 @@ export default function PanelAdmin() {
 }
 
 const PanelAdminStyled = styled.div`
+  display: ${(props) => (props.isAdminMode ? "block" : "none")};
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   box-shadow: ${theme.shadows.subtle};
-  
 
   .buttons {
     position: absolute;

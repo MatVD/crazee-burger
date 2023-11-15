@@ -2,14 +2,15 @@ import { styled } from "styled-components";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import { useState } from "react";
+import { useContext } from "react";
 import { theme } from "../../../../assets/theme";
+import AdminContext from "../../../../stores/AdminContext";
 
 export const AdminButtonAndToast = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const { isAdminMode, setAdminMode } = useContext(AdminContext);
 
   const onToggle = () => {
-    if (!isChecked) {
+    if (!isAdminMode) {
       toast.info("Mode admin activé", {
         // icon: <FaUserSecret size={30} />,
         theme: "dark",
@@ -22,14 +23,14 @@ export const AdminButtonAndToast = () => {
         progress: undefined,
       });
     }
-    setIsChecked(!isChecked);
+    setAdminMode(!isAdminMode);
   };
 
   return (
     <AdminButtonAndToastStyled>
       <ToggleButton
         onToggle={onToggle}
-        checked={isChecked}
+        checked={isAdminMode}
         labelIfChecked={"Désactiver le mode admin"}
         labelIfUnchecked={"Activer le mode admin"}
       />

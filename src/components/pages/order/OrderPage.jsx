@@ -4,17 +4,22 @@ import { Main } from "./main/Main";
 import { styled } from "styled-components";
 import { theme } from "../../../assets/theme";
 import PanelAdmin from "./panelAdmin/PanelAdmin";
+import AdminContext from "../../../stores/AdminContext";
+import { useState } from "react";
 
 const OrderPage = () => {
   const { username } = useParams();
+  const [isAdminMode, setAdminMode] = useState(false)
 
   return (
     <OrderPageStyled>
-      <div className="container">
-        <Navbar username={username} />
-        <Main />
-        <PanelAdmin />
-      </div>
+      <AdminContext.Provider value={{isAdminMode, setAdminMode}}>
+        <div className="container">
+          <Navbar username={username} />
+          <Main />
+          <PanelAdmin />
+        </div>
+      </AdminContext.Provider>
     </OrderPageStyled>
   );
 };
