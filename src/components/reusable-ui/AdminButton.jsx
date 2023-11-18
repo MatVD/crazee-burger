@@ -1,13 +1,7 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { theme } from "../../assets/theme";
 
-export default function AdminButton({ icon, label = "" }) {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleClick = () => {
-    setIsChecked(!isChecked);
-  }
+export default function AdminButton({ icon, label = "", isSelected, onClick }) {
 
   const theme = {
     dark : {
@@ -23,7 +17,7 @@ export default function AdminButton({ icon, label = "" }) {
   }
 
   return (
-    <AdminButtonStyled isChecked={isChecked} theme={theme} onClick={handleClick}>
+    <AdminButtonStyled isSelected={isSelected} theme={theme} onClick={onClick}>
       {icon}
       {label}
     </AdminButtonStyled>
@@ -45,7 +39,7 @@ const AdminButtonStyled = styled.button`
   box-shadow: ${theme.shadows.subtle};
   
 
-  ${(props) => props.isChecked ? props.theme.light : props.theme.dark };
+  ${(props) => props.isSelected ? props.theme.dark : props.theme.light };
 
   &:hover {
     text-decoration: underline;

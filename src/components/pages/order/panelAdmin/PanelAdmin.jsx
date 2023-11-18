@@ -11,15 +11,47 @@ import AdminContext from "../../../../stores/AdminContext";
 export default function PanelAdmin() {
   const { isAdminMode } = useContext(AdminContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [panelTitle, setPanelTitle] = useState("Ajouter un produit");
+
+  const labels = [
+    {
+      label: "Ajouter un produit",
+      icon: <AiOutlinePlus />,
+      isSelected: !isChecked,
+    },
+    {
+      label: "Modifier un produit",
+      icon: <MdModeEditOutline />,
+      isSelected: isChecked,
+    },
+  ];
+
+  const handleClick = (label) => {
+    setIsChecked(!isChecked);
+    setPanelTitle(label);
+  };
 
   return (
     <PanelAdminStyled isOpen={isOpen} isAdminMode={isAdminMode}>
       <div className="buttons">
         <AdminToggleButton isOpen={isOpen} setIsOpen={setIsOpen} />
-        <AdminButton icon={<AiOutlinePlus />} label="Ajouter un produit" />
-        <AdminButton icon={<MdModeEditOutline />} label="Modifier un produit" />
+        {
+        labels.map((element, index) => {
+          return (
+            <AdminButton
+              icon={element.icon}
+              label={element.label}
+              isSelected={element.isSelected}
+              key={index}
+              onClick={() => handleClick(element.label)}
+            />
+          ); 
+        })}
       </div>
-      <div className="panel">PanelAdmin</div>
+      <div className="panel">
+        <h2>{panelTitle}</h2>
+      </div>
     </PanelAdminStyled>
   );
 }
@@ -40,11 +72,17 @@ const PanelAdminStyled = styled.div`
     height: 0;
   }
 
-  div.panel {
+  .panel {
     position: relative;
     display: ${(props) => (props.isOpen ? "flex" : "none")};
     height: 250px;
     background-color: #fff;
     border-radius: 0 0 15px 15px;
+
+    h2 {
+      font-size: 16px;
+      margin-top: 17px;
+      margin-left: 22px;
+    }
   }
 `;

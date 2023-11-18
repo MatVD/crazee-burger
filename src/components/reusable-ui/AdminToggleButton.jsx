@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { theme } from "../../assets/theme";
 
-export default function AdminButton({ isOpen, setIsOpen }) {
+export default function AdminToggleButton({ isOpen, setIsOpen }) {
   
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -22,7 +22,7 @@ export default function AdminButton({ isOpen, setIsOpen }) {
   }
 
   return (
-    <AdminButtonStyled isChecked={isOpen} theme={theme} onClick={handleClick}>
+    <AdminButtonStyled isOpen={isOpen} theme={theme} onClick={handleClick}>
       {isOpen ? <FiChevronDown /> : <FiChevronUp />}
     </AdminButtonStyled>
   );
