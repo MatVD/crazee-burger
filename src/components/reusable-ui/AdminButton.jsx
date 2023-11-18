@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../assets/theme";
 
-export default function AdminButton({ icon, label = "", isSelected, onClick }) {
+const AdminButton = ({ icon, label = "", isSelected, onClick }) => {
 
   const theme = {
     dark : {
@@ -47,3 +47,5 @@ const AdminButtonStyled = styled.button`
     border-bottom: 1px solid white;
   }
 `;
+
+export default AdminButton;

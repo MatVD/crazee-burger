@@ -9,11 +9,11 @@ import { useState } from "react";
 
 const OrderPage = () => {
   const { username } = useParams();
-  const [isAdminMode, setAdminMode] = useState(false)
+  const [isAdminMode, setAdminMode] = useState(false);
 
   return (
     <OrderPageStyled>
-      <AdminContext.Provider value={{isAdminMode, setAdminMode}}>
+      <AdminContext.Provider value={{ isAdminMode, setAdminMode }}>
         <div className="container">
           <Navbar username={username} />
           <Main />

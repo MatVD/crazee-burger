@@ -2,31 +2,30 @@ import styled from "styled-components";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { theme } from "../../assets/theme";
 
-export default function AdminToggleButton({ isOpen, setIsOpen }) {
-  
+const AdminToggleButton = ({ isOpen, setIsOpen }) => {
   const handleClick = () => {
     setIsOpen(!isOpen);
-  }
+  };
 
   const theme = {
-    dark : {
+    dark: {
       background: "black",
       color: "white",
-      border: "black"
+      border: "black",
     },
-    light : {
+    light: {
       background: "white",
       color: "black",
       border: "1px solid #E4E5E9",
-    }
-  }
+    },
+  };
 
   return (
     <AdminButtonStyled isOpen={isOpen} theme={theme} onClick={handleClick}>
       {isOpen ? <FiChevronDown /> : <FiChevronUp />}
     </AdminButtonStyled>
   );
-}
+};
 
 const AdminButtonStyled = styled.button`
   display: flex;
@@ -42,7 +41,7 @@ const AdminButtonStyled = styled.button`
   // border: 1px solid #E4E5E9;
   box-shadow: ${theme.shadows.subtle};
 
-  ${(props) => props.isOpen ? props.theme.light : props.theme.dark };
+  ${(props) => (props.isOpen ? props.theme.light : props.theme.dark)};
 
   &:hover {
     text-decoration: underline;
@@ -50,3 +49,5 @@ const AdminButtonStyled = styled.button`
     border-bottom: 1px solid white;
   }
 `;
+
+export default AdminToggleButton;
