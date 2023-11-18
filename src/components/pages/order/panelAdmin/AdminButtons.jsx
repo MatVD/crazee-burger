@@ -11,6 +11,7 @@ const AdminButtons = ({ setPanelTitle, isOpen, setIsOpen }) => {
   const handleClick = (label) => {
     setPanelTitle(label);
     setIsSelected(!isSelected);
+    isOpen == false && setIsOpen(!isOpen);
   };
 
   const buttons = [

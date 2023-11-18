@@ -3,7 +3,7 @@ import { theme } from "../../assets/theme";
 import ThemeContext from "../../stores/themeContext";
 import { useContext } from "react";
 
-const AdminButton = ({ icon, label = "", isSelected, onClick }) => {
+const AdminButton = ({ icon, label = "", isSelected, onClick}) => {
   const themeContext = useContext(ThemeContext)
 
   return (
@@ -17,7 +17,7 @@ const AdminButton = ({ icon, label = "", isSelected, onClick }) => {
 const AdminButtonStyled = styled.button`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
   gap: 12px;
   min-width: 60px;
   height: 44px;
