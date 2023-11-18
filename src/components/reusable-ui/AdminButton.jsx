@@ -1,28 +1,18 @@
 import styled from "styled-components";
 import { theme } from "../../assets/theme";
+import ThemeContext from "../../stores/themeContext";
+import { useContext } from "react";
 
 const AdminButton = ({ icon, label = "", isSelected, onClick }) => {
-
-  const theme = {
-    dark : {
-      background: "black",
-      color: "white",
-      border: "black"
-    },
-    light : {
-      background: "white",
-      color: "black",
-      border: "1px solid #E4E5E9"
-    }
-  }
+  const themeContext = useContext(ThemeContext)
 
   return (
-    <AdminButtonStyled isSelected={isSelected} theme={theme} onClick={onClick}>
+    <AdminButtonStyled isSelected={isSelected} theme={themeContext} onClick={onClick}>
       {icon}
       {label}
     </AdminButtonStyled>
   );
-}
+};
 
 const AdminButtonStyled = styled.button`
   display: flex;
@@ -35,11 +25,9 @@ const AdminButtonStyled = styled.button`
   border: none;
   border-radius: 5px 5px 0 0;
   margin-left: 1px;
-  // border: 1px solid #E4E5E9;
   box-shadow: ${theme.shadows.subtle};
-  
 
-  ${(props) => props.isSelected ? props.theme.dark : props.theme.light };
+  ${(props) => (props.isSelected ? props.theme.dark : props.theme.light)};
 
   &:hover {
     text-decoration: underline;

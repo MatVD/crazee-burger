@@ -5,11 +5,14 @@ import { styled } from "styled-components";
 import { theme } from "../../../assets/theme";
 import PanelAdmin from "./panelAdmin/PanelAdmin";
 import AdminContext from "../../../stores/AdminContext";
-import { useState } from "react";
+import ThemeContext from "../../../stores/themeContext";
+import { useContext, useState } from "react";
 
 const OrderPage = () => {
   const { username } = useParams();
   const [isAdminMode, setAdminMode] = useState(false);
+
+  const themeContext = useContext(ThemeContext);
 
   return (
     <OrderPageStyled>
@@ -17,7 +20,9 @@ const OrderPage = () => {
         <div className="container">
           <Navbar username={username} />
           <Main />
-          <PanelAdmin />
+          <ThemeContext.Provider value={themeContext}>
+            <PanelAdmin />
+          </ThemeContext.Provider>
         </div>
       </AdminContext.Provider>
     </OrderPageStyled>
