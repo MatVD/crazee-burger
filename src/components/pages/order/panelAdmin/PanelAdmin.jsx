@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { theme } from "../../../../assets/theme";
 import { useContext } from "react";
-import AdminContext from "../../../../stores/AdminContext";
+import AdminContext from "../../../../contexts/adminContext";
 import AdminButtons from "./AdminButtons";
 
 const PanelAdmin = () => {
@@ -37,7 +37,7 @@ const PanelAdminStyled = styled.div`
     display: ${(props) => (props.isOpen ? "flex" : "none")};
     height: 250px;
     background-color: #fff;
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 15px 0;
 
     h2 {
       font-size: 16px;

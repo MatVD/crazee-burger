@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { useContext } from "react";
 import { theme } from "../../../../assets/theme";
-import AdminContext from "../../../../stores/AdminContext";
+import AdminContext from "../../../../contexts/AdminContext";
 
 export const AdminButtonAndToast = () => {
   const { isAdminMode, setAdminMode } = useContext(AdminContext);

@@ -1,13 +1,17 @@
 import styled from "styled-components";
 import { theme } from "../../assets/theme";
-import ThemeContext from "../../stores/themeContext";
+import ThemeContext from "../../contexts/themeContext";
 import { useContext } from "react";
 
-const AdminButton = ({ icon, label = "", isSelected, onClick}) => {
-  const themeContext = useContext(ThemeContext)
+const AdminButton = ({ icon, label = "", isSelected, onClick }) => {
+  const themeContext = useContext(ThemeContext);
 
   return (
-    <AdminButtonStyled isSelected={isSelected} theme={themeContext} onClick={onClick}>
+    <AdminButtonStyled
+      isSelected={isSelected}
+      theme={themeContext}
+      onClick={onClick}
+    >
       {icon}
       {label}
     </AdminButtonStyled>
@@ -17,7 +21,7 @@ const AdminButton = ({ icon, label = "", isSelected, onClick}) => {
 const AdminButtonStyled = styled.button`
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   gap: 12px;
   min-width: 60px;
   height: 44px;
