@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../assets/theme";
-import ThemeContext from "../../contexts/themeContext";
+import ThemeContext from "../../contexts/ThemeContext";
 import { useContext } from "react";
 
 const AdminButton = ({ icon, label = "", isSelected, onClick }) => {

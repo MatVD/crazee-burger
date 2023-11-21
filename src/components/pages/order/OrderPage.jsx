@@ -3,11 +3,10 @@ import { Navbar } from "./navbar/Navbar";
 import { Main } from "./main/Main";
 import { styled } from "styled-components";
 import { theme } from "../../../assets/theme";
-import AdminContext from "../../../contexts/adminContext";
+import AdminContext from "../../../contexts/AdminContext";
 import { useState } from "react";
 
 const OrderPage = () => {
-  
   const [isAdminMode, setAdminMode] = useState(false);
 
   return (

@@ -1,19 +1,23 @@
-import { ThemeContext, styled } from "styled-components";
+import { styled } from "styled-components";
 import { theme } from "../../../../assets/theme/index";
 import Basket from "./Basket";
 import Menu from "./Menu";
 import { useContext } from "react";
 import PanelAdmin from "../panelAdmin/PanelAdmin";
+import ThemeContext from "../../../../contexts/ThemeContext";
+import AdminContext from "../../../../contexts/AdminContext";
 
 export const Main = () => {
   const themeContext = useContext(ThemeContext);
+  const { isAdminMode } = useContext(AdminContext)
+  
   return (
     <MainStyled>
       {/* <Basket /> */}
       <div className="menu-and-admin">
         <Menu />
         <ThemeContext.Provider value={themeContext}>
-          <PanelAdmin />
+          {isAdminMode && <PanelAdmin />}
         </ThemeContext.Provider>
       </div>
     </MainStyled>

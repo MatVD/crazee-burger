@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { theme } from "../../../../assets/theme";
 import { useContext } from "react";
-import AdminContext from "../../../../contexts/adminContext";
+import AdminContext from "../../../../contexts/AdminContext";
 import AdminButtons from "./AdminButtons";
 
 const PanelAdmin = () => {
@@ -17,15 +17,17 @@ const PanelAdmin = () => {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
-      <div className="panel">
-        <h2>{panelTitle}</h2>
-      </div>
+      {
+        isOpen && (
+          <div className="panel">
+            <h2>{panelTitle}</h2>
+          </div>
+      )}
     </PanelAdminStyled>
   );
 };
 
 const PanelAdminStyled = styled.div`
-  display: ${(props) => (props.isAdminMode ? "block" : "none")};
   position: absolute;
   left: 0;
   right: 0;
@@ -33,8 +35,7 @@ const PanelAdminStyled = styled.div`
   box-shadow: ${theme.shadows.subtle};
 
   .panel {
-    position: relative;
-    display: ${(props) => (props.isOpen ? "flex" : "none")};
+    display: flex;
     height: 250px;
     background-color: ${theme.colors.white};
     border-radius: 0 0 15px 0;
