@@ -26,14 +26,12 @@ const AdminButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: ${theme.spacing.sm};
   min-width: 60px;
   height: 44px;
   padding: 0 22px 0 22px;
   border: none;
   border-radius: 5px 5px 0 0;
-  margin-left: 1px;
-  // border: 1px solid #E4E5E9;
   box-shadow: ${theme.shadows.subtle};
 
   ${(props) => (props.isOpen ? props.theme.light : props.theme.dark)};

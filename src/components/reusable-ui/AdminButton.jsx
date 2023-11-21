@@ -22,7 +22,7 @@ const AdminButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: ${theme.spacing.sm};
   min-width: 60px;
   height: 44px;
   padding: 0 22px 0 22px;

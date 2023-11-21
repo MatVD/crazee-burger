@@ -36,11 +36,11 @@ const PanelAdminStyled = styled.div`
     position: relative;
     display: ${(props) => (props.isOpen ? "flex" : "none")};
     height: 250px;
-    background-color: #fff;
+    background-color: ${theme.colors.white};
     border-radius: 0 0 15px 0;
 
     h2 {
-      font-size: 16px;
+      font-size: ${theme.fonts.size.P0};
       margin-top: 17px;
       margin-left: 22px;
     }
