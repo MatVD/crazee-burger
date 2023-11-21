@@ -7,14 +7,14 @@ import AdminContext from "../../../contexts/adminContext";
 import { useState } from "react";
 
 const OrderPage = () => {
-  const { username } = useParams();
+  
   const [isAdminMode, setAdminMode] = useState(false);
 
   return (
     <OrderPageStyled>
       <AdminContext.Provider value={{ isAdminMode, setAdminMode }}>
         <div className="container">
-          <Navbar username={username} />
+          <Navbar />
           <Main />
         </div>
       </AdminContext.Provider>

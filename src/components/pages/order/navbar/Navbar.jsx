@@ -3,11 +3,11 @@ import NavbarRigthSide from "./NavbarRigthSide";
 import NavbarLeftSide from "./NavbarLeftSide";
 import { theme } from "../../../../assets/theme";
 
-export const Navbar = ({ username }) => {
+export const Navbar = () => {
   return (
     <NavbarStyled>
       <NavbarLeftSide />
-      <NavbarRigthSide username={username} />
+      <NavbarRigthSide />
     </NavbarStyled>
   );
 };
