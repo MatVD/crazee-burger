@@ -46,11 +46,9 @@ const AdminTabs = ({ setPanelTitle, isOpen, setIsOpen }) => {
 };
 
 const AdminTabsStyled = styled.div`
-  position: absolute;
-  top: -44px;
-  left: 70px;
+  margin-left: 70px;
   display: flex;
-  height: 0;
+  gap: 1px;
 `;
 
 export default AdminTabs;

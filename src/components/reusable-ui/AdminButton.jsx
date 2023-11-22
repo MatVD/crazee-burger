@@ -23,14 +23,16 @@ const AdminButtonStyled = styled.button`
   justify-content: center;
   align-items: center;
   gap: ${theme.spacing.sm};
+
   min-width: 60px;
   height: 44px;
   padding: 0 22px 0 22px;
-  border: none;
+
+  border: 1px solid ${theme.colors.greyLight};
   border-radius: 5px 5px 0 0;
-  margin-left: 1px;
   box-shadow: ${theme.shadows.subtle};
 
+  font-size: ${theme.fonts.size.P0};
   ${(props) => (props.isSelected ? props.theme.dark : props.theme.light)};
 
   &:hover {
