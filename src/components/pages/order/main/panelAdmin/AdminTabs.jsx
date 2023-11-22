@@ -1,11 +1,11 @@
 import { useState } from "react";
-import AdminButton from "../../../reusable-ui/AdminButton";
-import AdminToggleButton from "../../../reusable-ui/AdminToggleButton";
+import AdminButton from "../../../../reusable-ui/AdminButton";
+import AdminToggleButton from "../../../../reusable-ui/AdminToggleButton";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components";
 
-const AdminButtons = ({ setPanelTitle, isOpen, setIsOpen }) => {
+const AdminTabs = ({ setPanelTitle, isOpen, setIsOpen }) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleClick = (label) => {
@@ -28,7 +28,7 @@ const AdminButtons = ({ setPanelTitle, isOpen, setIsOpen }) => {
   ];
 
   return (
-    <AdminButtonsStyled>
+    <AdminTabsStyled>
       <AdminToggleButton isOpen={isOpen} setIsOpen={setIsOpen} />
       {buttons.map((element, index) => {
         return (
@@ -41,11 +41,11 @@ const AdminButtons = ({ setPanelTitle, isOpen, setIsOpen }) => {
           />
         );
       })}
-    </AdminButtonsStyled>
+    </AdminTabsStyled>
   );
 };
 
-const AdminButtonsStyled = styled.div`
+const AdminTabsStyled = styled.div`
   position: absolute;
   top: -44px;
   left: 70px;
@@ -53,4 +53,4 @@ const AdminButtonsStyled = styled.div`
   height: 0;
 `;
 
-export default AdminButtons;
+export default AdminTabs;

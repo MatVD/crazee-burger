@@ -3,21 +3,21 @@ import { theme } from "../../../../assets/theme/index";
 import Basket from "./Basket";
 import Menu from "./Menu";
 import { useContext } from "react";
-import PanelAdmin from "../panelAdmin/PanelAdmin";
+import Admin from "./panelAdmin/Admin";
 import ThemeContext from "../../../../contexts/ThemeContext";
 import AdminContext from "../../../../contexts/AdminContext";
 
 export const Main = () => {
   const themeContext = useContext(ThemeContext);
-  const { isAdminMode } = useContext(AdminContext)
-  
+  const { isAdminMode } = useContext(AdminContext);
+
   return (
     <MainStyled>
       {/* <Basket /> */}
       <div className="menu-and-admin">
         <Menu />
         <ThemeContext.Provider value={themeContext}>
-          {isAdminMode && <PanelAdmin />}
+          {isAdminMode && <Admin />}
         </ThemeContext.Provider>
       </div>
     </MainStyled>
