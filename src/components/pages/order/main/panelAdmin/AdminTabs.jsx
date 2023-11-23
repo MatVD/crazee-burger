@@ -1,9 +1,8 @@
-import { useState } from "react";
 import AdminButton from "../../../../reusable-ui/AdminButton";
 import AdminToggleButton from "../../../../reusable-ui/AdminToggleButton";
-import { AiOutlinePlus } from "react-icons/ai";
-import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components";
+import { tabsConfig } from "./tabsConfig";
+import { useState } from "react";
 
 const AdminTabs = ({ setPanelTitle, isOpen, setIsOpen }) => {
   const [tabSelected, setTabSelected] = useState("add");
@@ -14,20 +13,7 @@ const AdminTabs = ({ setPanelTitle, isOpen, setIsOpen }) => {
     setTabSelected(index);
   };
 
-  const buttons = [
-    {
-      index: "add",
-      label: "Ajouter un produit",
-      icon: <AiOutlinePlus />,
-      className: tabSelected === "add" ? "isActive" : "",
-    },
-    {
-      index: "edit",
-      label: "Modifier un produit",
-      icon: <MdModeEditOutline />,
-      className: tabSelected === "edit" ? "isActive" : "",
-    },
-  ];
+  const buttons = tabsConfig(tabSelected);
 
   return (
     <AdminTabsStyled>
@@ -38,7 +24,9 @@ const AdminTabs = ({ setPanelTitle, isOpen, setIsOpen }) => {
             icon={button.icon}
             label={button.label}
             key={button.index}
-            onClick={() => {handleClick(button.label, button.index)}}
+            onClick={() => {
+              handleClick(button.label, button.index);
+            }}
             className={button.className}
           />
         );
