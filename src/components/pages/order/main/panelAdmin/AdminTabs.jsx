@@ -6,38 +6,40 @@ import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components";
 
 const AdminTabs = ({ setPanelTitle, isOpen, setIsOpen }) => {
-  const [isSelected, setIsSelected] = useState(true);
+  const [tabSelected, setTabSelected] = useState("add");
 
-  const handleClick = (label) => {
+  const handleClick = (label, index) => {
     setPanelTitle(label);
-    setIsSelected(!isSelected);
     isOpen == false && setIsOpen(!isOpen);
+    setTabSelected(index);
   };
 
   const buttons = [
     {
+      index: "add",
       label: "Ajouter un produit",
       icon: <AiOutlinePlus />,
-      isSelected: isSelected
+      className: tabSelected === "add" ? "isActive" : "",
     },
     {
+      index: "edit",
       label: "Modifier un produit",
       icon: <MdModeEditOutline />,
-      isSelected: !isSelected
+      className: tabSelected === "edit" ? "isActive" : "",
     },
   ];
 
   return (
     <AdminTabsStyled>
       <AdminToggleButton isOpen={isOpen} setIsOpen={setIsOpen} />
-      {buttons.map((button, index) => {
+      {buttons.map((button) => {
         return (
           <AdminButton
             icon={button.icon}
             label={button.label}
-            isSelected={button.isSelected}
-            key={index}
-            onClick={() => handleClick(button.label)}
+            key={button.index}
+            onClick={() => {handleClick(button.label, button.index)}}
+            className={button.className}
           />
         );
       })}

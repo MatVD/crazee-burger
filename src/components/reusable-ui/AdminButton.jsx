@@ -3,14 +3,16 @@ import { theme } from "../../assets/theme";
 import ThemeContext from "../../contexts/ThemeContext";
 import { useContext } from "react";
 
-const AdminButton = ({ icon, label = "", isSelected, onClick }) => {
+const AdminButton = ({ icon, label = "", onClick, className }) => {
   const themeContext = useContext(ThemeContext);
+
+  console.log(className);
 
   return (
     <AdminButtonStyled
-      isSelected={isSelected}
       theme={themeContext}
       onClick={onClick}
+      className={className}
     >
       {icon}
       {label}
@@ -33,7 +35,7 @@ const AdminButtonStyled = styled.button`
   box-shadow: ${theme.shadows.subtle};
 
   font-size: ${theme.fonts.size.P0};
-  ${(props) => (props.isSelected ? props.theme.dark : props.theme.light)};
+  ${(props) => (props.className === "isActive" ? props.theme.dark : props.theme.light)};
 
   &:hover {
     text-decoration: underline;
