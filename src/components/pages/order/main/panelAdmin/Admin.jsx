@@ -14,7 +14,7 @@ const Admin = () => {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
-      <AdminPanel panelTitel={panelTitle} isOpen={isOpen} />
+      <AdminPanel panelTitle={panelTitle} isOpen={isOpen} />
     </AdminStyled>
   );
 };
