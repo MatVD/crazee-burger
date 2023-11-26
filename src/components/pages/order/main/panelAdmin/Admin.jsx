@@ -4,7 +4,7 @@ import AdminTabs from "./AdminTabs";
 import { AdminPanel } from "./AdminPanel";
 
 const Admin = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [panelTitle, setPanelTitle] = useState("Ajouter un produit");
 
   return (

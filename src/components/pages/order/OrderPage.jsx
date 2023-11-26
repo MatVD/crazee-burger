@@ -7,10 +7,11 @@ import { useState } from "react";
 
 const OrderPage = () => {
   const [isAdminMode, setAdminMode] = useState(false);
+  const [tabSelected, setTabSelected] = useState("add");
 
   return (
     <OrderPageStyled>
-      <AdminContext.Provider value={{ isAdminMode, setAdminMode }}>
+      <AdminContext.Provider value={{ isAdminMode, setAdminMode, tabSelected, setTabSelected }}>
         <div className="container">
           <Navbar />
           <Main />

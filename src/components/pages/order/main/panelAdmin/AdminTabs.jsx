@@ -1,11 +1,12 @@
 import AdminButton from "../../../../reusable-ui/AdminButton";
 import AdminToggleButton from "../../../../reusable-ui/AdminToggleButton";
 import styled from "styled-components";
-import { tabsConfig } from "./tabsConfig";
-import { useState } from "react";
+import { getTabsConfig } from "./tabsConfig";
+import { useContext } from "react";
+import AdminContext from "../../../../../contexts/AdminContext";
 
 const AdminTabs = ({ setPanelTitle, isOpen, setIsOpen }) => {
-  const [tabSelected, setTabSelected] = useState("add");
+  const { tabSelected, setTabSelected } = useContext(AdminContext);
 
   const handleClick = (label, index) => {
     setPanelTitle(label);
@@ -13,12 +14,12 @@ const AdminTabs = ({ setPanelTitle, isOpen, setIsOpen }) => {
     setTabSelected(index);
   };
 
-  const buttons = tabsConfig(tabSelected);
+  const tabs = getTabsConfig(tabSelected);
 
   return (
     <AdminTabsStyled>
       <AdminToggleButton isOpen={isOpen} setIsOpen={setIsOpen} />
-      {buttons.map((button) => {
+      {tabs.map((button) => {
         return (
           <AdminButton
             icon={button.icon}

@@ -6,8 +6,6 @@ import { useContext } from "react";
 const AdminButton = ({ icon, label = "", onClick, className }) => {
   const themeContext = useContext(ThemeContext);
 
-  console.log(className);
-
   return (
     <AdminButtonStyled
       theme={themeContext}
