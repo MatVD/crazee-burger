@@ -1,18 +1,22 @@
-import { useParams } from "react-router-dom";
 import { Navbar } from "./navbar/Navbar";
 import { Main } from "./main/Main";
 import { styled } from "styled-components";
 import { theme } from "../../../assets/theme";
+import AdminContext from "../../../contexts/AdminContext";
+import { useState } from "react";
 
 const OrderPage = () => {
-  const { username } = useParams();
+  const [isAdminMode, setAdminMode] = useState(false);
+  const [tabSelected, setTabSelected] = useState("add");
 
   return (
     <OrderPageStyled>
-      <div className='container'>
-        <Navbar username={username} />
-        <Main />
-      </div>
+      <AdminContext.Provider value={{ isAdminMode, setAdminMode, tabSelected, setTabSelected }}>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </AdminContext.Provider>
     </OrderPageStyled>
   );
 };
@@ -29,8 +33,8 @@ const OrderPageStyled = styled.div`
     width: 1400px;
     height: 95vh;
 
-    display: flex; // Why display flex , See second child <Main /> with flex 1
-    flex-direction: column; 
+    display: flex; // Nécessaire pour <Main /> avec flex 1
+    flex-direction: column;
     background: ${theme.colors.background_white};
     border-radius: ${theme.borderRadius.extraRound};
   }

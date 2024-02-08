@@ -21,7 +21,7 @@ const WrapperInput = styled.div`
   input {
     width: 100%;
     font-family: Arial;
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
     font-style: normal;
     font-weight: ${theme.fonts.weights.regular};
     line-height: 17px; /* 113.333% */
