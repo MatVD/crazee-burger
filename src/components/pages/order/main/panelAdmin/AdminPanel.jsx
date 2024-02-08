@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../../../../assets/theme";
+import AddProductForm from "./AddProductForm";
 
 export const AdminPanel = ({ panelTitle, isOpen }) => {
   return (
     <AdminPanelStyled isOpen={isOpen}>
       <div className="panel">
-        <h2>{panelTitle}</h2>
+        {/* <h2>{panelTitle}</h2> */}
+        <AddProductForm />
       </div>
     </AdminPanelStyled>
   );
@@ -13,6 +15,7 @@ export const AdminPanel = ({ panelTitle, isOpen }) => {
 
 const AdminPanelStyled = styled.div`
   display: ${(props) => (props.isOpen ? "flex" : "none")};
+  align-items: center;
   height: 250px;
   background-color: ${theme.colors.white};
   border-radius: 0 0 15px 0;
