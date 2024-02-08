@@ -13,7 +13,7 @@ const AdminToggleButton = ({ isOpen, setIsOpen }) => {
 
   return (
     <AdminButtonStyled
-      isOpen={isOpen}
+      isopen={isOpen}
       theme={themeContext}
       onClick={handleClick}
     >
@@ -34,7 +34,7 @@ const AdminButtonStyled = styled.button`
   border-radius: 5px 5px 0 0;
   box-shadow: ${theme.shadows.subtle};
 
-  ${(props) => (props.isOpen ? props.theme.light : props.theme.dark)};
+  ${(props) => (props.isopen ? props.theme.light : props.theme.dark)};
 
   &:hover {
     text-decoration: underline;

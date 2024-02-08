@@ -13,6 +13,7 @@ export const Card = ({ imageSource, title, price }) => {
 };
 
 const CardStyled = styled.div`
+  position: relative; // For delete button
   width: 250px;
   height: 330px;
   margin: auto;

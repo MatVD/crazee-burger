@@ -11,7 +11,9 @@ const OrderPage = () => {
 
   return (
     <OrderPageStyled>
-      <AdminContext.Provider value={{ isAdminMode, setAdminMode, tabSelected, setTabSelected }}>
+      <AdminContext.Provider
+        value={{ isAdminMode, setAdminMode, tabSelected, setTabSelected }}
+      >
         <div className="container">
           <Navbar />
           <Main />
