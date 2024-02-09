@@ -4,7 +4,7 @@ import AddProductForm from "./AddProductForm";
 
 export const AdminPanel = ({ panelTitle, isOpen }) => {
   return (
-    <AdminPanelStyled isOpen={isOpen}>
+    <AdminPanelStyled isopen={isOpen}>
       <div className="panel">
         {/* <h2>{panelTitle}</h2> */}
         <AddProductForm />
@@ -14,7 +14,7 @@ export const AdminPanel = ({ panelTitle, isOpen }) => {
 };
 
 const AdminPanelStyled = styled.div`
-  display: ${(props) => (props.isOpen ? "flex" : "none")};
+  display: ${(props) => (props.isopen ? "flex" : "none")};
   align-items: center;
   height: 250px;
   background-color: ${theme.colors.white};

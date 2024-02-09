@@ -1,37 +1,44 @@
 import styled from "styled-components";
-import Button from "../../../../reusable-ui/AdminButton";
 import Input from "../../../../reusable-ui/Input";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { theme } from "../../../../../assets/theme";
+import { useForm } from "react-hook-form";
 
 export default function AddProductForm() {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => console.log(data);
+
   return (
     <AddProductFormStyled>
       <div className="image">{"Aucune image"}</div>
-      <form className="form">
-        <Input
-          icon={<FaHamburger className="icon" />}
-          className="input"
-          required={false}
-          bg={theme.colors.greyLight}
-          placeholder={"Nom du produit (ex. Super Burger)"}
-        />
-        <Input
-          icon={<BsFillCameraFill className="icon" />}
-          className="input"
-          required={false}
-          bg={theme.colors.greyLight}
-          placeholder={"Lien URL de l'image (ex. https://photo-produit.png)"}
-        />
-        <Input
-          icon={<MdOutlineEuro className="icon" />}
-          className="input"
-          required={false}
-          bg={theme.colors.greyLight}
-          placeholder={"Prix"}
-        />
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="wrapper-input">
+          <FaHamburger className="icon" />
+          <input
+            {...register("name", { required: false })}
+            placeholder="Nom du produit (ex. Super Burger)"
+            type="text"
+          />
+        </div>
+        <div className="wrapper-input">
+          <BsFillCameraFill className="icon" />
+          <input
+            {...register("url", { required: false })}
+            placeholder="Lien URL de l'image (ex. https://photo-produit.png)"
+            type="url"
+          />
+        </div>
+        <div className="wrapper-input">
+          <MdOutlineEuro className="icon" />
+          <input
+            {...register("price", { required: false })}
+            placeholder="Prix"
+            type="text"
+          />
+        </div>
         <button className="addProductBtn" type="submit">
           Ajouter un nouveau produit au menu
         </button>
@@ -68,10 +75,15 @@ const AddProductFormStyled = styled.div`
     flex-direction: column;
     gap: 10px;
 
-    .input {
+    .wrapper-input {
       flex: 1;
-      padding: 8px 16px 8px 24px;
+      padding: 4px 20px;
       background-color: ${theme.colors.greyLight};
+      border-radius: ${theme.borderRadius.round};
+
+      display: flex;
+      align-items: center;
+      gap: 20px;
 
       .icon {
         color: ${theme.colors.greyBlue};
@@ -79,6 +91,13 @@ const AddProductFormStyled = styled.div`
 
       input {
         background-color: ${theme.colors.greyLight};
+        border: none;
+        width: 100%;
+        padding: 5px;
+
+        &:focus {
+          outline: none;
+        }
       }
     }
 
