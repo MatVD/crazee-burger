@@ -1,23 +1,29 @@
 import styled from "styled-components";
-import Input from "../../../../reusable-ui/Input";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { theme } from "../../../../../assets/theme";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useMenuContext } from "../../../../../contexts/MenuContext";
 import { fakeMenu2 } from "../../../../../fakeData/fakeMenu";
+import { useState } from "react";
 
 export default function AddProductForm() {
-  const { register, handleSubmit, reset, watch } = useForm();
   const { menus, setMenus } = useMenuContext();
+  const { register, handleSubmit, reset, watch } = useForm({
+    defaultValues: {
+      name: "",
+      url: "",
+      price: "",
+    },
+  });
+  const imageUrl = watch("url");
 
   const onSubmit = (data) => {
-    console.log(data);
     setMenus([
       ...menus,
       {
-        id: fakeMenu2.length + 1,
+        id: menus.length + 1,
         imageSource: data.url,
         title: data.name,
         price: data.price,
@@ -32,7 +38,11 @@ export default function AddProductForm() {
   return (
     <AddProductFormStyled>
       <div className="image">
-        {<img src={watch("url")} alt="Image du produit" width={209}  />}
+        {imageUrl !== "" ? (
+          <img src={imageUrl} alt="Image du produit" width={209} />
+        ) : (
+          <span>Aucune image</span>
+        )}
       </div>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="wrapper-input">

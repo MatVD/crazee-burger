@@ -7,9 +7,9 @@ const BottomCard = ({ price, title }) => {
   return (
     <BottomCardStyled>
       <h2>{title}</h2>
-      <div className='priceAndButton'>
+      <div className="priceAndButton">
         <p>{formatPrice(price)}</p>
-        <Button label='Ajouter' className='CTAbutton' />
+        <Button label="Ajouter" className="CTAbutton" />
       </div>
     </BottomCardStyled>
   );
@@ -23,6 +23,7 @@ const BottomCardStyled = styled.div`
     font-style: normal;
     font-weight: 700;
     width: 250px;
+    height: 55px;
 
     // Properties for ellipsis ...
     white-space: nowrap;

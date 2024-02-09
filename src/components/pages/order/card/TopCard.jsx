@@ -8,7 +8,11 @@ const TopCard = ({ image, title }) => {
   return (
     <TopCardStyled>
       {isAdminMode && <TiDelete className="delete" />}
-      <img src={image} alt={`image du produit ${title}`} />
+      {image ? (
+        <img src={image} alt={`image du produit ${title}`} />
+      ) : (
+        <img src="/images/coming-soon.png" alt={`image du produit ${title}`} />
+      )}
     </TopCardStyled>
   );
 };
