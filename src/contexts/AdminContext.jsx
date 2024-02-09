@@ -23,13 +23,13 @@ export function useAdminContext() {
 
 export default AdminContext;
 
-// export default function AdminContextProvider({ children }) {
-//   const [isAdminMode, setAdminMode] = useState(false);
-//   const [tabSelected, setTabSelected] = useState("add");
+export function AdminContextProvider({ children }) {
+  const [isAdminMode, setAdminMode] = useState(false);
+  const [tabSelected, setTabSelected] = useState("add");
 
-//   <AdminContext.Provider
-//     value={{ isAdminMode, setAdminMode, tabSelected, setTabSelected }}
-//   >
-//     {children}
-//   </AdminContext.Provider>;
-// }
+  <AdminContext.Provider
+    value={{ isAdminMode, setAdminMode, tabSelected, setTabSelected }}
+  >
+    {children}
+  </AdminContext.Provider>;
+}
