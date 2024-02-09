@@ -5,12 +5,12 @@ import { getTabsConfig } from "./tabsConfig";
 import { useContext } from "react";
 import AdminContext from "../../../../../contexts/AdminContext";
 
-const AdminTabs = ({ setPanelTitle, isopen, setIsOpen }) => {
+const AdminTabs = ({ setPanelTitle, isOpen, setIsOpen }) => {
   const { tabSelected, setTabSelected } = useContext(AdminContext);
 
   const handleClick = (label, index) => {
     setPanelTitle(label);
-    isopen == "false" && setIsOpen(!isopen);
+    isOpen == false && setIsOpen(!isOpen);
     setTabSelected(index);
   };
 
@@ -18,7 +18,7 @@ const AdminTabs = ({ setPanelTitle, isopen, setIsOpen }) => {
 
   return (
     <AdminTabsStyled>
-      <AdminToggleButton isopen={isopen} setIsOpen={setIsOpen} />
+      <AdminToggleButton isOpen={isOpen} setIsOpen={setIsOpen} />
       {tabs.map((button) => {
         return (
           <AdminButton
