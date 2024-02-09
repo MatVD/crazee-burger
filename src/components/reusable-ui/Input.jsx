@@ -7,6 +7,7 @@ const Input = ({
   icon,
   className,
   placeholder,
+  required = true,
   ...otherProps
 }) => {
   return (
@@ -15,7 +16,7 @@ const Input = ({
       <input
         value={value}
         onChange={onChange}
-        required
+        required={required}
         {...otherProps}
         placeholder={placeholder}
       />

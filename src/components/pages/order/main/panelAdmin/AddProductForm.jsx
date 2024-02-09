@@ -10,34 +10,37 @@ export default function AddProductForm() {
   return (
     <AddProductFormStyled>
       <div className="image">{"Aucune image"}</div>
-      <div className="form">
+      <form className="form">
         <Input
           icon={<FaHamburger className="icon" />}
           className="input"
+          required={false}
           bg={theme.colors.greyLight}
           placeholder={"Nom du produit (ex. Super Burger)"}
         />
         <Input
           icon={<BsFillCameraFill className="icon" />}
           className="input"
+          required={false}
           bg={theme.colors.greyLight}
           placeholder={"Lien URL de l'image (ex. https://photo-produit.png)"}
         />
         <Input
           icon={<MdOutlineEuro className="icon" />}
           className="input"
+          required={false}
           bg={theme.colors.greyLight}
           placeholder={"Prix"}
         />
         <button className="addProductBtn" type="submit">
           Ajouter un nouveau produit au menu
         </button>
-      </div>
+      </form>
     </AddProductFormStyled>
   );
 }
 
-const AddProductFormStyled = styled.form`
+const AddProductFormStyled = styled.div`
   display: flex;
   gap: 20px;
   margin-left: 70px;
