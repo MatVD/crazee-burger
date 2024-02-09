@@ -39,6 +39,7 @@ const TopCardStyled = styled.div`
   img {
     height: 100%;
     height: 100%;
+    border-radius: ${theme.borderRadius.round};
   }
 `;
 

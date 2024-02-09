@@ -4,7 +4,7 @@ import { theme } from "../../../../assets/theme";
 import { useMenuContext } from "../../../../contexts/MenuContext";
 
 const Menu = () => {
-  const { menus, setMenus } = useMenuContext();
+  const { menus } = useMenuContext();
 
   return (
     <MenuStyled>

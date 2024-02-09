@@ -4,20 +4,20 @@ import { theme } from "../../assets/theme";
 import { useContext } from "react";
 import ThemeContext from "../../contexts/ThemeContext";
 
-const AdminToggleButton = ({ isOpen, setIsOpen }) => {
+const AdminToggleButton = ({ isopen, setIsOpen }) => {
   const themeContext = useContext(ThemeContext);
 
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(!isopen.toString());
   };
 
   return (
     <AdminButtonStyled
-      isOpen={isOpen}
+      isopen={isopen}
       theme={themeContext}
       onClick={handleClick}
     >
-      {isOpen ? <FiChevronDown /> : <FiChevronUp />}
+      {isopen ? <FiChevronDown /> : <FiChevronUp />}
     </AdminButtonStyled>
   );
 };
@@ -34,7 +34,7 @@ const AdminButtonStyled = styled.button`
   border-radius: 5px 5px 0 0;
   box-shadow: ${theme.shadows.subtle};
 
-  ${(props) => (props.isOpen ? props.theme.light : props.theme.dark)};
+  ${(props) => (props.isopen ? props.theme.light : props.theme.dark)};
 
   &:hover {
     text-decoration: underline;

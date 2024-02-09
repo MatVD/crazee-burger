@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { theme } from "../../../../../assets/theme";
 import AddProductForm from "./AddProductForm";
 
-export const AdminPanel = ({ panelTitle, isOpen }) => {
+export const AdminPanel = ({ panelTitle, isopen }) => {
   return (
-    <AdminPanelStyled isopen={isOpen}>
+    <AdminPanelStyled isopen={isopen}>
       <div className="panel">
         {/* <h2>{panelTitle}</h2> */}
         <AddProductForm />

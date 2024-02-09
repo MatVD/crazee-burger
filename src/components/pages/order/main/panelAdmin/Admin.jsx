@@ -11,10 +11,10 @@ const Admin = () => {
     <AdminStyled>
       <AdminTabs
         setPanelTitle={setPanelTitle}
-        isOpen={isOpen}
+        isopen={isOpen}
         setIsOpen={setIsOpen}
       />
-      <AdminPanel panelTitle={panelTitle} isOpen={isOpen} />
+      <AdminPanel panelTitle={panelTitle} isopen={isOpen} />
     </AdminStyled>
   );
 };
