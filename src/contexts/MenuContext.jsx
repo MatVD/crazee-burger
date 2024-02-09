@@ -1,43 +1,29 @@
 // Menu Context //
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { fakeMenu2 } from "../fakeData/fakeMenu";
 
-const MenuContext = createContext([
-  {
-    id: 0,
-    imageSource: "",
-    title: "",
-    price: 0,
-    quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
-  },
-]);
 
-export function useAdminContext() {
-  const { id, imageSource, title, price, quantity, isAvailable, isAdvertised } =
-    useContext(MenuContext);
+const MenuContext = createContext({
+  menus: [],
+  setMenus: () => {},
+});
 
-  return {
-    id,
-    imageSource,
-    title,
-    price,
-    quantity,
-    isAvailable,
-    isAdvertised,
-  };
+export function useMenuContext() {
+  const { menus, setMenus } = useContext(MenuContext);
+
+  return { menus, setMenus };
 }
 
 export default MenuContext;
 
-export function AdminContextProvider({ children }) {
-  const [menu, setMenu] = useState();
+// export default function MenuContextProvider({ children }) {
+//   const [menus, setMenus] = useState(fakeMenu2);
 
-  useEffect(() => {
-    setMenu(fakeMenu2);
-  }, []);
+//   useEffect(() => {
+//     setMenus(fakeMenu2);
+//   }, [menus]);
 
-  <MenuContext.Provider value={menu}>{children}</MenuContext.Provider>;
-}
+//   <MenuContext.Provider value={{ menus, setMenus }}>
+//     {children}
+//   </MenuContext.Provider>;
+// }

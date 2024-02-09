@@ -5,7 +5,6 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { theme } from "../../../../../assets/theme";
 import { useForm } from "react-hook-form";
-import { fakeMenu } from "../../../../../fakeData/fakeMenu";
 
 export default function AddProductForm() {
   const { register, handleSubmit, reset } = useForm();

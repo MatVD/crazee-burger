@@ -2,24 +2,23 @@ import { Navbar } from "./navbar/Navbar";
 import { Main } from "./main/Main";
 import { styled } from "styled-components";
 import { theme } from "../../../assets/theme";
-import AdminContextProvider, {
-  useAdminContext,
-} from "../../../contexts/AdminContext";
+import AdminContext, { useAdminContext } from "../../../contexts/AdminContext";
+import { useState } from "react";
 
 const OrderPage = () => {
-  const { isAdminMode, setAdminMode, tabSelected, setTabSelected } =
-    useAdminContext();
+  const [isAdminMode, setAdminMode] = useState(false);
+  const [tabSelected, setTabSelected] = useState("add");
 
   return (
     <OrderPageStyled>
-      <AdminContextProvider
-        value={{ isAdminMode, setAdminMode, tabSelected, setTabSelected }}
-      >
-        <div className="container">
+      <div className="container">
+        <AdminContext.Provider
+          value={{ isAdminMode, setAdminMode, tabSelected, setTabSelected }}
+        >
           <Navbar />
           <Main />
-        </div>
-      </AdminContextProvider>
+        </AdminContext.Provider>
+      </div>
     </OrderPageStyled>
   );
 };

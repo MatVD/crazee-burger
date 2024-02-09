@@ -1,20 +1,19 @@
 import { styled } from "styled-components";
 import { Card } from "../card/Card";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
-import { useState } from "react";
 import { theme } from "../../../../assets/theme";
+import { useMenuContext } from "../../../../contexts/MenuContext";
 
 const Menu = () => {
-  const [products, setProducts] = useState(fakeMenu2);
+  const { menus, setMenus } = useMenuContext();
 
   return (
     <MenuStyled>
-      {products.map((product) => (
+      {menus.map((menu) => (
         <Card
-          key={product.id}
-          imageSource={product.imageSource}
-          title={product.title}
-          price={product.price}
+          key={menu.id}
+          imageSource={menu.imageSource}
+          title={menu.title}
+          price={menu.price}
         />
       ))}
     </MenuStyled>
