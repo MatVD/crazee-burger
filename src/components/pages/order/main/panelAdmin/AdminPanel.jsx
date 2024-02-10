@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../../assets/theme";
-import AddProductForm from "./AddProductForm";
+import AddProductForm from "./AddProductForm/AddProductForm";
 
 export const AdminPanel = ({ panelTitle, isOpen }) => {
   return (
