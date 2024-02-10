@@ -5,9 +5,11 @@ import { useForm } from "react-hook-form";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
-import { useEffect } from "react";
+import { FiCheck } from "react-icons/fi";
+import { useEffect, useState } from "react";
 
 export default function Form({ setImageUrl }) {
+  const [submited, setSubmited] = useState(false);
   const { menus, setMenus } = useMenuContext();
   const { register, handleSubmit, reset, watch } = useForm({
     defaultValues: {
@@ -24,6 +26,7 @@ export default function Form({ setImageUrl }) {
   }, [watch("url")]);
 
   const onSubmit = (data) => {
+    setSubmited(!submited);
     setMenus([
       ...menus,
       {
@@ -36,7 +39,12 @@ export default function Form({ setImageUrl }) {
         isAdvertised: false,
       },
     ]);
+
     reset();
+
+    setTimeout(() => {
+      setSubmited(false);
+    }, 5000);
   };
   return (
     <FormStyled className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -64,9 +72,19 @@ export default function Form({ setImageUrl }) {
           type="text"
         />
       </div>
-      <button className="addProductBtn" type="submit">
-        Ajouter un nouveau produit au menu
-      </button>
+      <div className="wrapperBtn">
+        <button
+          className={submited ? "addProductBtn submited" : "addProductBtn"}
+          type="submit"
+        >
+          Ajouter un nouveau produit au menu
+        </button>
+        {submited ? (
+          <div className="text-info">
+            <FiCheck className="checkIcon" /> <span>Ajouté avec succès !</span>
+          </div>
+        ) : null}
+      </div>
     </FormStyled>
   );
 }
@@ -105,16 +123,39 @@ const FormStyled = styled.form`
     }
   }
 
-  .addProductBtn {
-    width: 310px;
-    height: 35px;
-    border: none;
-    border-radius: ${theme.borderRadius.round};
-    background-color: ${theme.colors.success};
-    color: ${theme.colors.white};
+  .wrapperBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .addProductBtn {
+      width: 310px;
+      height: 35px;
+      border: none;
+      border-radius: ${theme.borderRadius.round};
+      background-color: ${theme.colors.success};
+      color: ${theme.colors.white};
 
-    &:hover {
-      cursor: pointer;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .submited {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.success};
+      border: 1px solid ${theme.colors.success};
+    }
+
+    .text-info {
+      color: ${theme.colors.success};
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .checkIcon {
+        border: 1px solid ${theme.colors.success};
+        border-radius: ${theme.borderRadius.circle};
+      }
     }
   }
 `;
