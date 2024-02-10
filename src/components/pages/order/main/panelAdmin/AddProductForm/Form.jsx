@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../assets/theme";
-import { useMenuContext } from "../../../../../../contexts/MenuContext";
+import {
+  addMenu,
+  useMenuContext,
+} from "../../../../../../contexts/MenuContext";
 import { useForm } from "react-hook-form";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
@@ -27,18 +30,8 @@ export default function Form({ setImageUrl }) {
 
   const onSubmit = (data) => {
     setSubmited(!submited);
-    setMenus([
-      ...menus,
-      {
-        id: menus.length + 1,
-        imageSource: data.url,
-        title: data.name,
-        price: data.price,
-        quantity: 1,
-        isAvailable: true,
-        isAdvertised: false,
-      },
-    ]);
+    const newMenus = addMenu(menus, data);
+    setMenus(newMenus);
 
     reset();
 

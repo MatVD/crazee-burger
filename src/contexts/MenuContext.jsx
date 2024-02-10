@@ -1,7 +1,6 @@
 // Menu Context //
 
-import { createContext, useContext, useEffect, useState } from "react";
-
+import { createContext, useContext } from "react";
 
 const MenuContext = createContext({
   menus: [],
@@ -27,3 +26,22 @@ export default MenuContext;
 //     {children}
 //   </MenuContext.Provider>;
 // }
+
+export function deleteMenu(array, id) {
+  return array.filter((menu) => menu.id != id);
+}
+
+export function addMenu(array, newMenu) {
+  return [
+    ...array,
+    {
+      id: array.length + 1,
+      imageSource: newMenu.url,
+      title: newMenu.name,
+      price: newMenu.price,
+      quantity: 1,
+      isAvailable: true,
+      isAdvertised: false,
+    },
+  ];
+}

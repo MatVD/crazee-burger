@@ -2,15 +2,15 @@ import { styled } from "styled-components";
 import { TiDelete } from "react-icons/ti";
 import { theme } from "../../../../assets/theme";
 import { useAdminContext } from "../../../../contexts/AdminContext";
-import { useMenuContext } from "../../../../contexts/MenuContext";
+import { deleteMenu, useMenuContext } from "../../../../contexts/MenuContext";
 
 const TopCard = ({ image, title, id }) => {
   const { isAdminMode } = useAdminContext();
   const { menus, setMenus } = useMenuContext();
 
   const handleClick = (id) => {
-    const nextMenus = menus.filter((menu) => menu.id != id);
-    setMenus(nextMenus);
+    const newMenus = deleteMenu(menus, id);
+    setMenus(newMenus);
   };
 
   return (
