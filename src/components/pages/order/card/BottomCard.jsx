@@ -20,7 +20,6 @@ const BottomCardStyled = styled.div`
     color: #17161a;
     font-family: Amatic SC;
     font-size: 36px;
-    font-style: normal;
     font-weight: 700;
     width: 250px;
     height: 55px;

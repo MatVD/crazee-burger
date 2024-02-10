@@ -2,21 +2,28 @@ import { styled } from "styled-components";
 import { Card } from "../card/Card";
 import { theme } from "../../../../assets/theme";
 import { useMenuContext } from "../../../../contexts/MenuContext";
+import Empty from "./EmptyMenus";
+import { useAdminContext } from "../../../../contexts/AdminContext";
 
 const Menu = () => {
   const { menus } = useMenuContext();
+  const { isAdminMode } = useAdminContext();
 
   return (
     <MenuStyled>
-      {menus.map((menu) => (
-        <Card
-          key={menu.title}
-          id={menu.id}
-          imageSource={menu.imageSource}
-          title={menu.title}
-          price={menu.price}
-        />
-      ))}
+      {menus.length < 1 ? (
+        <Empty admin={isAdminMode} />
+      ) : (
+        menus.map((menu) => (
+          <Card
+            key={menu.title}
+            id={menu.id}
+            imageSource={menu.imageSource}
+            title={menu.title}
+            price={menu.price}
+          />
+        ))
+      )}
     </MenuStyled>
   );
 };

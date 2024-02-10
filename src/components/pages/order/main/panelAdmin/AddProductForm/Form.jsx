@@ -33,11 +33,10 @@ export default function Form({ setImageUrl }) {
     const newMenus = addMenu(menus, data);
     setMenus(newMenus);
 
-    reset();
-
     setTimeout(() => {
       setSubmited(false);
-    }, 5000);
+      reset();
+    }, 2000);
   };
   return (
     <FormStyled className="form" onSubmit={handleSubmit(onSubmit)}>
