@@ -2,12 +2,22 @@ import { styled } from "styled-components";
 import { TiDelete } from "react-icons/ti";
 import { theme } from "../../../../assets/theme";
 import { useAdminContext } from "../../../../contexts/AdminContext";
+import { useMenuContext } from "../../../../contexts/MenuContext";
 
-const TopCard = ({ image, title }) => {
+const TopCard = ({ image, title, id }) => {
   const { isAdminMode } = useAdminContext();
+  const { menus, setMenus } = useMenuContext();
+
+  const handleClick = (id) => {
+    const nextMenus = menus.filter((menu) => menu.id != id);
+    setMenus(nextMenus);
+  };
+
   return (
     <TopCardStyled>
-      {isAdminMode && <TiDelete className="delete" />}
+      {isAdminMode && (
+        <TiDelete className="delete" onClick={() => handleClick(id)} />
+      )}
       {image ? (
         <img src={image} alt={`image du produit ${title}`} />
       ) : (

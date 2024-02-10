@@ -3,10 +3,10 @@ import { theme } from "../../../../assets/theme";
 import TopCard from "./TopCard";
 import BottomCard from "./BottomCard";
 
-export const Card = ({ imageSource, title, price }) => {
+export const Card = ({ id, imageSource, title, price }) => {
   return (
     <CardStyled>
-      <TopCard image={imageSource} title={title} />
+      <TopCard image={imageSource} title={title} id={id} />
       <BottomCard price={price} title={title} />
     </CardStyled>
   );

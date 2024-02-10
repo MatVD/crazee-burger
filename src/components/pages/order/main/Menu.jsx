@@ -10,7 +10,8 @@ const Menu = () => {
     <MenuStyled>
       {menus.map((menu) => (
         <Card
-          key={menu.id}
+          key={menu.title}
+          id={menu.id}
           imageSource={menu.imageSource}
           title={menu.title}
           price={menu.price}
