@@ -1,24 +1,20 @@
 import styled from "styled-components";
-import { theme } from "../../assets/theme";
-import ThemeContext from "../../contexts/ThemeContext";
+import { theme } from "../../../../../../assets/theme";
+import ThemeContext from "../../../../../../contexts/ThemeContext";
 import { useContext } from "react";
 
-const AdminButton = ({ icon, label = "", onClick, className }) => {
+const Tabs = ({ icon, label = "", onClick, className }) => {
   const themeContext = useContext(ThemeContext);
 
   return (
-    <AdminButtonStyled
-      theme={themeContext}
-      onClick={onClick}
-      className={className}
-    >
+    <TabsStyled theme={themeContext} onClick={onClick} className={className}>
       {icon}
       {label}
-    </AdminButtonStyled>
+    </TabsStyled>
   );
 };
 
-const AdminButtonStyled = styled.button`
+const TabsStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +29,8 @@ const AdminButtonStyled = styled.button`
   box-shadow: ${theme.shadows.subtle};
 
   font-size: ${theme.fonts.size.P0};
-  ${(props) => (props.className === "isActive" ? props.theme.dark : props.theme.light)};
+  ${(props) =>
+    props.className === "isActive" ? props.theme.dark : props.theme.light};
 
   &:hover {
     text-decoration: underline;
@@ -42,4 +39,4 @@ const AdminButtonStyled = styled.button`
   }
 `;
 
-export default AdminButton;
+export default Tabs;

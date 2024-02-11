@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import AdminTabs from "./AdminTabs";
+import AdminTabs from "./AdminTabs/AdminTabs";
 import { AdminPanel } from "./AdminPanel";
 import AddProductForm from "./AddProductForm/AddProductForm";
 
