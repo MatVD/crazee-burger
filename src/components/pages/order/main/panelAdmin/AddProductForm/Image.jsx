@@ -3,9 +3,9 @@ import { theme } from "../../../../../../assets/theme";
 
 export default function Image({ imageUrl }) {
   return (
-    <ImageStyled className="image">
+    <ImageStyled>
       {imageUrl !== "" ? (
-        <img src={imageUrl} alt="Image du produit" width={209} />
+        <img src={imageUrl} alt="Image du produit" width={210}/>
       ) : (
         <span>Aucune image</span>
       )}
@@ -14,17 +14,16 @@ export default function Image({ imageUrl }) {
 }
 
 const ImageStyled = styled.div`
-  flex: 1;
+  grid-area: 1/1/4/2;
+
   border: 1px solid ${theme.colors.greyLight};
   border-radius: ${theme.borderRadius.round};
-  width: 210px;
-  height: 120px;
+  color: ${theme.colors.greyBlue};
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  color: ${theme.colors.greyBlue};
 
   img {
     border-radius: ${theme.borderRadius.round};

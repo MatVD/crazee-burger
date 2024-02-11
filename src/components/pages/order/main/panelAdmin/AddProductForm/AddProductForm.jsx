@@ -15,8 +15,11 @@ export default function AddProductForm() {
 }
 
 const AddProductFormStyled = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-left: 70px;
   width: 850px;
+  height: 190px;
+  margin-left: 70px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 15px;
 `;

@@ -40,7 +40,7 @@ export default function Form({ setImageUrl }) {
   };
   return (
     <FormStyled className="form" onSubmit={handleSubmit(onSubmit)}>
-      <div className="wrapper-input">
+      <div className="wrapper-input wrapper-input-1">
         <FaHamburger className="icon" />
         <input
           {...register("name", { required: false })}
@@ -48,7 +48,7 @@ export default function Form({ setImageUrl }) {
           type="text"
         />
       </div>
-      <div className="wrapper-input">
+      <div className="wrapper-input wrapper-input-2">
         <BsFillCameraFill className="icon" />
         <input
           {...register("url", { required: false })}
@@ -56,7 +56,7 @@ export default function Form({ setImageUrl }) {
           type="url"
         />
       </div>
-      <div className="wrapper-input">
+      <div className="wrapper-input wrapper-input-3">
         <MdOutlineEuro className="icon" />
         <input
           {...register("price", { required: false })}
@@ -82,15 +82,14 @@ export default function Form({ setImageUrl }) {
 }
 
 const FormStyled = styled.form`
-  flex: 3;
-  width: 210px;
+  grid-area: 1/2/5/3;
 
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 10px;
 
   .wrapper-input {
-    flex: 1;
     padding: 4px 20px;
     background-color: ${theme.colors.greyLight};
     border-radius: ${theme.borderRadius.round};
@@ -115,10 +114,23 @@ const FormStyled = styled.form`
     }
   }
 
+  .wrapper-input-1 {
+    grid-area: 1/1/2/4;
+  }
+  .wrapper-input-2 {
+    grid-area: 2/1/3/4;
+  }
+  .wrapper-input-3 {
+    grid-area: 3/1/4/4;
+  }
+
   .wrapperBtn {
+    grid-area: 4/1/5/4;
+
     display: flex;
     align-items: center;
     gap: 10px;
+    
     .addProductBtn {
       width: 310px;
       height: 35px;
