@@ -1,7 +1,7 @@
 import Tabs from "./Tabs";
 import AdminToggleTabs from "../AdminTabs/AdminToggleTabs";
 import styled from "styled-components";
-import { getTabsConfig } from "../tabsConfig";
+import { getTabsConfig } from "./tabsConfig";
 import { useContext } from "react";
 import AdminContext from "../../../../../../contexts/AdminContext";
 
