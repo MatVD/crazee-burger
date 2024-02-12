@@ -16,7 +16,7 @@ const Menu = () => {
       ) : (
         menus.map((menu) => (
           <Card
-            key={menu.title}
+            key={menu.id}
             id={menu.id}
             imageSource={menu.imageSource}
             title={menu.title}
