@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../assets/theme";
-import ThemeContext from "../../../../../../contexts/ThemeContext";
+import ThemeContext from "../../../../../../contexts/themeContext";
 import { useContext } from "react";
 
 const Tabs = ({ icon, label = "", onClick, className }) => {

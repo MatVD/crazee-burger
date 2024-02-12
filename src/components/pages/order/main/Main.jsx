@@ -4,7 +4,7 @@ import Basket from "./Basket";
 import Menu from "./Menu";
 import { useContext, useState } from "react";
 import Admin from "./panelAdmin/Admin";
-import ThemeContext from "../../../../contexts/ThemeContext";
+import ThemeContext from "../../../../contexts/themeContext";
 import { useAdminContext } from "../../../../contexts/AdminContext";
 import MenuContext from "../../../../contexts/MenuContext";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
