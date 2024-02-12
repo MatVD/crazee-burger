@@ -10,6 +10,7 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { FiCheck } from "react-icons/fi";
 import { useEffect, useState } from "react";
+import Button from "../../../../../reusable-ui/Button";
 
 export default function Form({ setImageUrl }) {
   const [submited, setSubmited] = useState(false);
@@ -65,12 +66,13 @@ export default function Form({ setImageUrl }) {
         />
       </div>
       <div className="wrapperBtn">
-        <button
+        <Button
           className={submited ? "addProductBtn submited" : "addProductBtn"}
           type="submit"
-        >
-          Ajouter un nouveau produit au menu
-        </button>
+          icon={""}
+          label={"Ajouter un nouveau produit au menu"}
+          version="success"
+        />
         {submited ? (
           <div className="text-info">
             <FiCheck className="checkIcon" /> <span>Ajouté avec succès !</span>
@@ -130,18 +132,9 @@ const FormStyled = styled.form`
     display: flex;
     align-items: center;
     gap: 10px;
-    
-    .addProductBtn {
-      width: 310px;
-      height: 35px;
-      border: none;
-      border-radius: ${theme.borderRadius.round};
-      background-color: ${theme.colors.success};
-      color: ${theme.colors.white};
 
-      &:hover {
-        cursor: pointer;
-      }
+    .addProductBtn {
+      padding: 12px 20px;
     }
 
     .submited {
