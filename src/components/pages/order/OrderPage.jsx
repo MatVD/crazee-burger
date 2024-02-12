@@ -2,7 +2,7 @@ import { Navbar } from "./navbar/Navbar";
 import { Main } from "./main/Main";
 import { styled } from "styled-components";
 import { theme } from "../../../assets/theme";
-import AdminContext from "../../../contexts/AdminContext";
+import AdminContext, { useAdminContext } from "../../../contexts/AdminContext";
 import { useState } from "react";
 
 const OrderPage = () => {
@@ -11,12 +11,14 @@ const OrderPage = () => {
 
   return (
     <OrderPageStyled>
-      <AdminContext.Provider value={{ isAdminMode, setAdminMode, tabSelected, setTabSelected }}>
-        <div className="container">
+      <div className="container">
+        <AdminContext.Provider
+          value={{ isAdminMode, setAdminMode, tabSelected, setTabSelected }}
+        >
           <Navbar />
           <Main />
-        </div>
-      </AdminContext.Provider>
+        </AdminContext.Provider>
+      </div>
     </OrderPageStyled>
   );
 };

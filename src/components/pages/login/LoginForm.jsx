@@ -28,14 +28,16 @@ const LoginForm = () => {
           onChange={(event) => setUsername(event.target.value)}
           value={username}
           icon={<BsPersonCircle />}
-          placeholder='Entrez votre prénom'
-          type='text'
+          placeholder="Entrez votre prénom"
+          type="text"
+          className={"input"}
         />
 
         <Button
-          label='Accéder à mon espace'
+          label="Accéder à mon espace"
           icon={<MdOutlineKeyboardArrowRight />}
-          className='CTAbutton'
+          className="CTAbutton"
+          version="large"
         />
       </form>
     </WrapperForm>
@@ -57,6 +59,10 @@ const WrapperForm = styled.div`
   form {
     display: flex;
     flex-direction: column;
+
+    .input {
+      padding: 18px 24px;
+    }
   }
 
   h1,
@@ -78,10 +84,8 @@ const WrapperForm = styled.div`
   }
 
   .CTAbutton {
-    width: 100%;
-    height: 53px;
-    padding: 18px 106.203px;
     margin-top: 18px;
+    padding: 18px 106px;
   }
 `;
 

@@ -2,12 +2,11 @@ import { styled } from "styled-components";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import { useContext } from "react";
 import { theme } from "../../../../assets/theme";
-import AdminContext from "../../../../contexts/AdminContext";
+import { useAdminContext } from "../../../../contexts/AdminContext";
 
 export const AdminButtonAndToast = () => {
-  const { isAdminMode, setAdminMode } = useContext(AdminContext);
+  const { isAdminMode, setAdminMode } = useAdminContext();
 
   const onToggle = () => {
     if (!isAdminMode) {

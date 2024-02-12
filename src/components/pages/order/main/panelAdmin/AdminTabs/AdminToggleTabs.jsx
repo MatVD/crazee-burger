@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { theme } from "../../assets/theme";
+import { theme } from "../../../../../../assets/theme";
 import { useContext } from "react";
-import ThemeContext from "../../contexts/ThemeContext";
+import ThemeContext from "../../../../../../contexts/ThemeContext";
 
-const AdminToggleButton = ({ isOpen, setIsOpen }) => {
+const AdminToggleTabs = ({ isOpen, setIsOpen }) => {
   const themeContext = useContext(ThemeContext);
 
   const handleClick = () => {
@@ -12,17 +12,17 @@ const AdminToggleButton = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <AdminButtonStyled
-      isOpen={isOpen}
+    <AdminToggleTabsStyled
+      $isOpen={isOpen}
       theme={themeContext}
       onClick={handleClick}
     >
       {isOpen ? <FiChevronDown /> : <FiChevronUp />}
-    </AdminButtonStyled>
+    </AdminToggleTabsStyled>
   );
 };
 
-const AdminButtonStyled = styled.button`
+const AdminToggleTabsStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,7 @@ const AdminButtonStyled = styled.button`
   border-radius: 5px 5px 0 0;
   box-shadow: ${theme.shadows.subtle};
 
-  ${(props) => (props.isOpen ? props.theme.light : props.theme.dark)};
+  ${(props) => (props.$isOpen ? props.theme.light : props.theme.dark)};
 
   &:hover {
     text-decoration: underline;
@@ -43,4 +43,4 @@ const AdminButtonStyled = styled.button`
   }
 `;
 
-export default AdminToggleButton;
+export default AdminToggleTabs;

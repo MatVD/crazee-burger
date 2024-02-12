@@ -1,20 +1,21 @@
 import styled from "styled-components";
 import { useState } from "react";
-import AdminTabs from "./AdminTabs";
+import AdminTabs from "./AdminTabs/AdminTabs";
 import { AdminPanel } from "./AdminPanel";
+import AddProductForm from "./AddProductForm/AddProductForm";
 
 const Admin = () => {
-  const [isOpen, setIsOpen] = useState(true);
-  const [panelTitle, setPanelTitle] = useState("Ajouter un produit");
+  const [isOpen, setIsOpen] = useState("true");
+  const [panelContent, setPanelContent] = useState(<AddProductForm />);
 
   return (
     <AdminStyled>
       <AdminTabs
-        setPanelTitle={setPanelTitle}
+        setPanelContent={setPanelContent}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
-      <AdminPanel panelTitle={panelTitle} isOpen={isOpen} />
+      <AdminPanel content={panelContent} isOpen={isOpen} />
     </AdminStyled>
   );
 };

@@ -1,34 +1,54 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 import { theme } from "../../assets/theme";
 
-const Button = ({ label, icon, className }) => {
+export default function Button({
+  label,
+  icon,
+  className,
+  version = "standard",
+  type,
+}) {
   return (
-    <StyledButton className={className}>
+    <StyledButton className={className} version={version} type={type}>
       {label} {icon && icon}
     </StyledButton>
   );
-};
+}
 
 const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0;
   gap: ${theme.spacing.xs};
   border-radius: ${theme.borderRadius.round};
   border: 1px solid ${theme.colors.primary};
   background: ${theme.colors.primary};
   color: ${theme.colors.white};
   font-family: Arial;
-  font-style: normal;
   font-weight: ${theme.fonts.weights.bold};
-  line-height: 15px; /* 100% */
+
   &:hover {
     border: 1px solid ${theme.colors.primary};
     background: ${theme.colors.white};
     color: ${theme.colors.primary};
     cursor: pointer;
   }
+
+  ${({ version }) => extraStyle[version]}
 `;
 
-export default Button;
+const success = css`
+  background-color: ${theme.colors.success};
+  border: none;
+
+  &:hover {
+    border: none;
+    background: ${theme.colors.success};
+    color: ${theme.colors.white};
+    cursor: pointer;
+  }
+`;
+
+const extraStyle = {
+  success,
+};

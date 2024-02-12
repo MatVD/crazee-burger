@@ -1,11 +1,25 @@
 import { styled } from "styled-components";
 import { theme } from "../../assets/theme";
 
-const Input = ({ value, onChange, icon, ...otherProps }) => {
+const Input = ({
+  value,
+  onChange,
+  icon,
+  className,
+  placeholder,
+  required = true,
+  ...otherProps
+}) => {
   return (
-    <WrapperInput>
+    <WrapperInput className={className}>
       {icon && icon}
-      <input value={value} onChange={onChange} required {...otherProps} />
+      <input
+        value={value}
+        onChange={onChange}
+        required={required}
+        {...otherProps}
+        placeholder={placeholder}
+      />
     </WrapperInput>
   );
 };
@@ -14,9 +28,8 @@ const WrapperInput = styled.div`
   display: inline-flex;
   align-items: center;
   gap: ${theme.spacing.sm};
-  padding: 18px 24px;
   border-radius: ${theme.borderRadius.round};
-  background: ${theme.colors.white};
+  background: ${(props) => (props.bg ? props.bg : theme.colors.white)};
 
   input {
     width: 100%;

@@ -7,9 +7,9 @@ const BottomCard = ({ price, title }) => {
   return (
     <BottomCardStyled>
       <h2>{title}</h2>
-      <div className='priceAndButton'>
+      <div className="priceAndButton">
         <p>{formatPrice(price)}</p>
-        <Button label='Ajouter' className='CTAbutton' />
+        <Button label="Ajouter" className="CTAbutton" version="standard" />
       </div>
     </BottomCardStyled>
   );
@@ -20,9 +20,9 @@ const BottomCardStyled = styled.div`
     color: #17161a;
     font-family: Amatic SC;
     font-size: 36px;
-    font-style: normal;
     font-weight: 700;
     width: 250px;
+    height: 55px;
 
     // Properties for ellipsis ...
     white-space: nowrap;
@@ -41,9 +41,7 @@ const BottomCardStyled = styled.div`
     }
 
     .CTAbutton {
-      width: 95px;
-      height: 38px;
-      padding: 12px 26.3px 12px 26.5px;
+      padding: 12px 25px 12px 25px;
     }
   }
 `;
