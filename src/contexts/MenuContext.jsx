@@ -33,7 +33,6 @@ export function deleteMenu(array, id) {
 
 export function addMenu(array, newMenu) {
   return [
-    ...array,
     {
       id: array.length + 1,
       imageSource: newMenu.url,
@@ -43,5 +42,6 @@ export function addMenu(array, newMenu) {
       isAvailable: true,
       isAdvertised: false,
     },
+    ...array,
   ];
 }
