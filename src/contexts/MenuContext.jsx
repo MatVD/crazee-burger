@@ -5,12 +5,15 @@ import { createContext, useContext } from "react";
 const MenuContext = createContext({
   menus: [],
   setMenus: () => {},
+  menuToEdit: {},
+  setMenuToEdit: () => {},
 });
 
 export function useMenuContext() {
-  const { menus, setMenus } = useContext(MenuContext);
+  const { menus, setMenus, menuToEdit, setMenuToEdit } =
+    useContext(MenuContext);
 
-  return { menus, setMenus };
+  return { menus, setMenus, menuToEdit, setMenuToEdit };
 }
 
 export default MenuContext;
@@ -27,11 +30,11 @@ export default MenuContext;
 //   </MenuContext.Provider>;
 // }
 
-export function deleteMenu(array, id) {
+function deleteMenu(array, id) {
   return array.filter((menu) => menu.id != id);
 }
 
-export function addMenu(array, newMenu) {
+function addMenu(array, newMenu) {
   return [
     {
       id: array.length + 1,
@@ -45,3 +48,9 @@ export function addMenu(array, newMenu) {
     ...array,
   ];
 }
+
+function getMenu(array, id) {
+  return array.filter((menu) => menu.id === id)[0];
+}
+
+export { deleteMenu, addMenu, getMenu };

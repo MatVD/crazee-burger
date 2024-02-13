@@ -13,12 +13,15 @@ export const Main = () => {
   const themeContext = useContext(ThemeContext);
   const { isAdminMode } = useAdminContext();
   const [menus, setMenus] = useState(fakeMenu2);
+  const [menuToEdit, setMenuToEdit] = useState(null);
 
   return (
     <MainStyled>
       {/* <Basket /> */}
       <div className="menu-and-admin">
-        <MenuContext.Provider value={{ menus, setMenus }}>
+        <MenuContext.Provider
+          value={{ menus, setMenus, menuToEdit, setMenuToEdit }}
+        >
           <Menu />
           <ThemeContext.Provider value={themeContext}>
             {isAdminMode && <Admin />}

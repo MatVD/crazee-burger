@@ -1,13 +1,17 @@
 import { styled } from "styled-components";
 import { Card } from "../card/Card";
 import { theme } from "../../../../assets/theme";
-import { useMenuContext } from "../../../../contexts/MenuContext";
+import { getMenu, useMenuContext } from "../../../../contexts/MenuContext";
 import Empty from "./EmptyMenus";
 import { useAdminContext } from "../../../../contexts/AdminContext";
 
 const Menu = () => {
-  const { menus } = useMenuContext();
+  const { menus, setMenuToEdit } = useMenuContext();
   const { isAdminMode } = useAdminContext();
+
+  const handleClick = (menus, id) => {
+    setMenuToEdit(getMenu(menus, id));
+  };
 
   return (
     <MenuStyled>
@@ -21,6 +25,8 @@ const Menu = () => {
             imageSource={menu.imageSource}
             title={menu.title}
             price={menu.price}
+            onClick={() => handleClick(menus, menu.id)}
+            version={isAdminMode ? "adminMode" : ""}
           />
         ))
       )}

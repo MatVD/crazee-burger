@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import Image from "./Image";
 import Form from "./Form";
 import { useState } from "react";
+import Image from "../../../../../reusable-ui/Image";
 
 export default function AddProductForm() {
   const [imageUrl, setImageUrl] = useState("");
 
   return (
     <AddProductFormStyled>
-      <Image imageUrl={imageUrl} />
+      <Image src={imageUrl} />
       <Form setImageUrl={setImageUrl} />
     </AddProductFormStyled>
   );

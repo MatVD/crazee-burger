@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { theme } from "../../../../../../assets/theme";
+import { theme } from "../../assets/theme";
 
-export default function Image({ imageUrl }) {
+export default function Image({ src }) {
   return (
     <ImageStyled>
-      {imageUrl !== "" ? (
-        <img src={imageUrl} alt="Image du produit" width={210}/>
+      {src !== "" ? (
+        <img src={src} alt="Image du produit" width={210} />
       ) : (
         <span>Aucune image</span>
       )}
@@ -23,7 +23,6 @@ const ImageStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 
   img {
     border-radius: ${theme.borderRadius.round};
