@@ -1,11 +1,11 @@
 import Button from "../../../reusable-ui/Button";
 import { formatPrice } from "../../../../utils/maths";
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 import { theme } from "../../../../assets/theme";
 
-const BottomCard = ({ price, title }) => {
+export default function BottomCard({ price, title, state }) {
   return (
-    <BottomCardStyled>
+    <BottomCardStyled state={state}>
       <h2>{title}</h2>
       <div className="priceAndButton">
         <p>{formatPrice(price)}</p>
@@ -13,7 +13,7 @@ const BottomCard = ({ price, title }) => {
       </div>
     </BottomCardStyled>
   );
-};
+}
 
 const BottomCardStyled = styled.div`
   h2 {
@@ -37,13 +37,21 @@ const BottomCardStyled = styled.div`
     margin-top: 10px;
 
     p {
-      color: ${theme.colors.primary};
+      // Si l'état est à "onEdit" alors text color white sinon primary
+      color: ${({ state }) =>
+        state == "onEdit" ? theme.colors.white : theme.colors.primary};
     }
 
     .CTAbutton {
       padding: 12px 25px 12px 25px;
+
+      // Si l'état est à "onEdit" alors text color primary sinon white
+      color: ${({ state }) =>
+        state == "onEdit" ? theme.colors.primary : theme.colors.white};
+
+      // Si l'état est à "onEdit" alors bg-color white sinon primary
+      background-color: ${({ state }) =>
+        state == "onEdit" ? theme.colors.white : theme.colors.primary};
     }
   }
 `;
-
-export default BottomCard;

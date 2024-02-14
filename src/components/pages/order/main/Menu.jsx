@@ -1,17 +1,13 @@
 import { styled } from "styled-components";
-import { Card } from "../card/Card";
+import Card from "../card/Card";
 import { theme } from "../../../../assets/theme";
-import { getMenu, useMenuContext } from "../../../../contexts/MenuContext";
+import { useMenuContext } from "../../../../contexts/MenuContext";
 import Empty from "./EmptyMenus";
 import { useAdminContext } from "../../../../contexts/AdminContext";
 
-const Menu = () => {
-  const { menus, setMenuToEdit } = useMenuContext();
+export default function Menu() {
+  const { menus } = useMenuContext();
   const { isAdminMode } = useAdminContext();
-
-  const handleClick = (menus, id) => {
-    setMenuToEdit(getMenu(menus, id));
-  };
 
   return (
     <MenuStyled>
@@ -25,14 +21,13 @@ const Menu = () => {
             imageSource={menu.imageSource}
             title={menu.title}
             price={menu.price}
-            onClick={() => handleClick(menus, menu.id)}
-            version={isAdminMode ? "adminMode" : ""}
+            isAdminMode={isAdminMode}
           />
         ))
       )}
     </MenuStyled>
   );
-};
+}
 
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
@@ -45,5 +40,3 @@ const MenuStyled = styled.div`
 
   overflow-y: scroll;
 `;
-
-export default Menu;

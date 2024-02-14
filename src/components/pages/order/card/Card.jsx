@@ -2,22 +2,39 @@ import { css, styled } from "styled-components";
 import { theme } from "../../../../assets/theme";
 import TopCard from "./TopCard";
 import BottomCard from "./BottomCard";
+import CardStateContext from "../../../../contexts/CardStateContext";
+import { useEffect, useState } from "react";
+import { getMenu, useMenuContext } from "../../../../contexts/MenuContext";
 
-export const Card = ({
-  id,
-  imageSource,
-  title,
-  price,
-  onClick,
-  version = "standard",
-}) => {
+export default function Card({ id, imageSource, title, price, isAdminMode }) {
+  const { menus, setMenuToEdit } = useMenuContext();
+  const [cardState, setCardState] = useState("normal");
+
+  useEffect(() => {
+    isAdminMode && setCardState("isEditable");
+    !isAdminMode && setCardState("normal");
+  }, [isAdminMode]);
+
+  const handleClick = () => {
+    setMenuToEdit(getMenu(menus, id));
+    isAdminMode && setCardState("onEdit");
+  };
+
   return (
-    <CardStyled onClick={onClick} version={version}>
-      <TopCard image={imageSource} title={title} id={id} />
-      <BottomCard price={price} title={title} />
-    </CardStyled>
+    <CardStateContext.Provider value={{ cardState, setCardState }}>
+      <CardStyled onClick={handleClick} $state={cardState}>
+        <TopCard
+          image={imageSource}
+          title={title}
+          id={id}
+          isAdminMode={isAdminMode}
+          state={cardState}
+        />
+        <BottomCard price={price} title={title} state={cardState} />
+      </CardStyled>
+    </CardStateContext.Provider>
   );
-};
+}
 
 const CardStyled = styled.div`
   position: relative; // For delete button
@@ -33,10 +50,10 @@ const CardStyled = styled.div`
   padding: 50px 20px 10px 20px;
   border-radius: ${theme.borderRadius.extraRound};
 
-  ${({ version }) => getVersion[version]}
+  ${({ $state }) => getState[$state]}
 `;
 
-const adminMode = css`
+const isEditable = css`
   &:hover {
     cursor: pointer;
     border: 1px solid ${theme.colors.primary};
@@ -44,6 +61,11 @@ const adminMode = css`
   }
 `;
 
-const getVersion = {
-  adminMode,
+const onEdit = css`
+  background-color: ${theme.colors.primary};
+`;
+
+const getState = {
+  isEditable,
+  onEdit,
 };

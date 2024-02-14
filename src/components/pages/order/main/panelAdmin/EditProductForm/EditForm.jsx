@@ -17,8 +17,6 @@ export default function Form({ setImageUrl, menuToEdit }) {
   const { menus, setMenus } = useMenuContext();
   const { register, handleSubmit, reset, watch, setValue } = useForm();
 
-  console.log(menuToEdit);
-
   // Utilisation useEffect car setImageUrl(watch("url")) lève une erreur
   // Cf. https://stackoverflow.com/questions/62336340/cannot-update-a-component-while-rendering-a-different-component-warning
   useEffect(() => {
@@ -41,7 +39,7 @@ export default function Form({ setImageUrl, menuToEdit }) {
       reset();
     }, 2000);
   };
-  
+
   return (
     <FormStyled className="form" onSubmit={handleSubmit(onSubmit)}>
       <div className="wrapper-input wrapper-input-1">

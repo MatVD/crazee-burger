@@ -1,31 +1,26 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 import { TiDelete } from "react-icons/ti";
 import { theme } from "../../../../assets/theme";
-import { useAdminContext } from "../../../../contexts/AdminContext";
 import { deleteMenu, useMenuContext } from "../../../../contexts/MenuContext";
 
-const TopCard = ({ image, title, id }) => {
-  const { isAdminMode } = useAdminContext();
+export default function TopCard({ image, title, id, isAdminMode, state }) {
   const { menus, setMenus } = useMenuContext();
 
-  const handleClick = (id) => {
+  const handleClick = () => {
     const newMenus = deleteMenu(menus, id);
     setMenus(newMenus);
   };
 
   return (
-    <TopCardStyled>
-      {isAdminMode && (
-        <TiDelete className="delete" onClick={() => handleClick(id)} />
-      )}
-      {image ? (
-        <img src={image} alt={`image du produit ${title}`} />
-      ) : (
-        <img src="/images/coming-soon.png" alt={`image du produit ${title}`} />
-      )}
+    <TopCardStyled state={state}>
+      {isAdminMode && <TiDelete className="delete" onClick={handleClick} />}
+      <img
+        src={image ? image : "/images/coming-soon.png"}
+        alt={`Image du ${title}`}
+      />
     </TopCardStyled>
   );
-};
+}
 
 const TopCardStyled = styled.div`
   margin: 0 auto;
@@ -43,11 +38,13 @@ const TopCardStyled = styled.div`
     width: 20px;
     height: 20px;
     color: ${theme.colors.primary};
-  }
 
-  .delete:hover {
-    cursor: pointer;
-    color: ${theme.colors.red};
+    ${({ state }) => getSate[state]}
+
+    &:hover {
+      cursor: pointer;
+      color: ${theme.colors.red};
+    }
   }
 
   img {
@@ -57,4 +54,10 @@ const TopCardStyled = styled.div`
   }
 `;
 
-export default TopCard;
+const onEdit = css`
+  color: ${theme.colors.white};
+`;
+
+const getSate = {
+  onEdit,
+};
