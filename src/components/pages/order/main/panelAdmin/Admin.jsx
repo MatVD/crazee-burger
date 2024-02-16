@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import { useState } from "react";
 import AdminTabs from "./AdminTabs/AdminTabs";
 import { AdminPanel } from "./AdminPanel";
-import AddProductForm from "./AddProductForm/AddProductForm";
 import { useAdminContext } from "../../../../../contexts/AdminContext";
 
 const Admin = () => {
-  const [panelContent, setPanelContent] = useState(<AddProductForm />);
+  const { panelContent, setPanelContent } = useAdminContext();
   const { isOpen, setIsOpen } = useAdminContext();
 
   return (

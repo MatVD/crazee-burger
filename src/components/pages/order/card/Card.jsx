@@ -6,11 +6,12 @@ import CardStateContext from "../../../../contexts/CardStateContext";
 import { useEffect, useState } from "react";
 import { getMenu, useMenuContext } from "../../../../contexts/MenuContext";
 import { useAdminContext } from "../../../../contexts/AdminContext";
+import EditProductForm from "../main/panelAdmin/EditProductForm/EditProductForm";
 
 export default function Card({ id, imageSource, title, price, isAdminMode }) {
   const { menus, setMenuToEdit } = useMenuContext();
   const [cardState, setCardState] = useState("normal");
-  const { setTabSelected, setIsOpen } = useAdminContext();
+  const { setTabSelected, setIsOpen, setPanelContent } = useAdminContext();
 
   useEffect(() => {
     isAdminMode && setCardState("isEditable");
@@ -22,6 +23,7 @@ export default function Card({ id, imageSource, title, price, isAdminMode }) {
     isAdminMode && setCardState("onEdit");
     setTabSelected("edit");
     setIsOpen(true);
+    setPanelContent(<EditProductForm />);
   };
 
   return (

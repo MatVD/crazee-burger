@@ -1,6 +1,7 @@
 // Admin Context //
 
 import { createContext, useContext, useState } from "react";
+import AddProductForm from "../components/pages/order/main/panelAdmin/AddProductForm/AddProductForm";
 
 const AdminContext = createContext({
   isAdminMode: false,
@@ -9,6 +10,8 @@ const AdminContext = createContext({
   setTabSelected: () => {},
   isOpen: false,
   setIsOpen: () => {},
+  panelContent: null,
+  setPanelContent: () => {},
 });
 
 export function useAdminContext() {
@@ -19,6 +22,8 @@ export function useAdminContext() {
     setTabSelected,
     isOpen,
     setIsOpen,
+    panelContent,
+    setPanelContent,
   } = useContext(AdminContext);
 
   return {
@@ -28,6 +33,8 @@ export function useAdminContext() {
     setTabSelected,
     isOpen,
     setIsOpen,
+    panelContent,
+    setPanelContent,
   };
 }
 

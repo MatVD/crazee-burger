@@ -2,13 +2,15 @@ import { Navbar } from "./navbar/Navbar";
 import { Main } from "./main/Main";
 import { styled } from "styled-components";
 import { theme } from "../../../assets/theme";
-import AdminContext, { useAdminContext } from "../../../contexts/AdminContext";
+import AdminContext from "../../../contexts/AdminContext";
 import { useState } from "react";
+import AddProductForm from "./main/panelAdmin/AddProductForm/AddProductForm";
 
 const OrderPage = () => {
   const [isAdminMode, setAdminMode] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
   const [isOpen, setIsOpen] = useState("true");
+  const [panelContent, setPanelContent] = useState(<AddProductForm />);
 
   return (
     <OrderPageStyled>
@@ -21,6 +23,8 @@ const OrderPage = () => {
             setIsOpen,
             tabSelected,
             setTabSelected,
+            panelContent,
+            setPanelContent,
           }}
         >
           <Navbar />
