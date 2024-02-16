@@ -2,11 +2,10 @@ import Tabs from "./Tabs";
 import AdminToggleTabs from "../AdminTabs/AdminToggleTabs";
 import styled from "styled-components";
 import { getTabsConfig } from "./tabsConfig";
-import { useContext } from "react";
-import AdminContext from "../../../../../../contexts/AdminContext";
+import { useAdminContext } from "../../../../../../contexts/AdminContext";
 
 const AdminTabs = ({ setPanelContent, isOpen, setIsOpen }) => {
-  const { tabSelected, setTabSelected } = useContext(AdminContext);
+  const { tabSelected, setTabSelected } = useAdminContext();
 
   const handleClick = (content, index) => {
     setPanelContent(content);

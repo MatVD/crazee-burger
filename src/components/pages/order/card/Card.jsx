@@ -5,10 +5,12 @@ import BottomCard from "./BottomCard";
 import CardStateContext from "../../../../contexts/CardStateContext";
 import { useEffect, useState } from "react";
 import { getMenu, useMenuContext } from "../../../../contexts/MenuContext";
+import { useAdminContext } from "../../../../contexts/AdminContext";
 
 export default function Card({ id, imageSource, title, price, isAdminMode }) {
   const { menus, setMenuToEdit } = useMenuContext();
   const [cardState, setCardState] = useState("normal");
+  const { setTabSelected, setIsOpen } = useAdminContext();
 
   useEffect(() => {
     isAdminMode && setCardState("isEditable");
@@ -18,6 +20,8 @@ export default function Card({ id, imageSource, title, price, isAdminMode }) {
   const handleClick = () => {
     setMenuToEdit(getMenu(menus, id));
     isAdminMode && setCardState("onEdit");
+    setTabSelected("edit");
+    setIsOpen(true);
   };
 
   return (

@@ -5,15 +5,17 @@ import Menu from "./Menu";
 import { useContext, useState } from "react";
 import Admin from "./panelAdmin/Admin";
 import ThemeContext from "../../../../contexts/themeContext";
-import { useAdminContext } from "../../../../contexts/AdminContext";
+import AdminContext, {
+  useAdminContext,
+} from "../../../../contexts/AdminContext";
 import MenuContext from "../../../../contexts/MenuContext";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 
 export const Main = () => {
   const themeContext = useContext(ThemeContext);
-  const { isAdminMode } = useAdminContext();
   const [menus, setMenus] = useState(fakeMenu2);
   const [menuToEdit, setMenuToEdit] = useState(null);
+  const { isAdminMode } = useAdminContext();
 
   return (
     <MainStyled>

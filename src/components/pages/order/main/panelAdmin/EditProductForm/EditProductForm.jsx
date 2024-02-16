@@ -39,7 +39,6 @@ const styleMenuToEdit = css`
 `;
 
 const styleMessage = css`
-  border: 1px solid red;
   display: flex;
   align-items: center;
 `;

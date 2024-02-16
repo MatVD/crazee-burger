@@ -7,17 +7,27 @@ const AdminContext = createContext({
   setAdminMode: () => {},
   tabSelected: false,
   setTabSelected: () => {},
+  isOpen: false,
+  setIsOpen: () => {},
 });
 
 export function useAdminContext() {
-  const { isAdminMode, setAdminMode, tabSelected, setTabSelected } =
-    useContext(AdminContext);
+  const {
+    isAdminMode,
+    setAdminMode,
+    tabSelected,
+    setTabSelected,
+    isOpen,
+    setIsOpen,
+  } = useContext(AdminContext);
 
   return {
     isAdminMode,
     setAdminMode,
     tabSelected,
     setTabSelected,
+    isOpen,
+    setIsOpen,
   };
 }
 

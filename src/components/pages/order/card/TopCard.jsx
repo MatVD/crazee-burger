@@ -12,7 +12,7 @@ export default function TopCard({ image, title, id, isAdminMode, state }) {
   };
 
   return (
-    <TopCardStyled state={state}>
+    <TopCardStyled $state={state}>
       {isAdminMode && <TiDelete className="delete" onClick={handleClick} />}
       <img
         src={image ? image : "/images/coming-soon.png"}
@@ -39,7 +39,7 @@ const TopCardStyled = styled.div`
     height: 20px;
     color: ${theme.colors.primary};
 
-    ${({ state }) => getSate[state]}
+    ${({ $state }) => getSate[$state]}
 
     &:hover {
       cursor: pointer;

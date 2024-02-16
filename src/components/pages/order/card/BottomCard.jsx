@@ -5,7 +5,7 @@ import { theme } from "../../../../assets/theme";
 
 export default function BottomCard({ price, title, state }) {
   return (
-    <BottomCardStyled state={state}>
+    <BottomCardStyled $state={state}>
       <h2>{title}</h2>
       <div className="priceAndButton">
         <p>{formatPrice(price)}</p>
@@ -38,20 +38,20 @@ const BottomCardStyled = styled.div`
 
     p {
       // Si l'état est à "onEdit" alors text color white sinon primary
-      color: ${({ state }) =>
-        state == "onEdit" ? theme.colors.white : theme.colors.primary};
+      color: ${({ $state }) =>
+        $state == "onEdit" ? theme.colors.white : theme.colors.primary};
     }
 
     .CTAbutton {
       padding: 12px 25px 12px 25px;
 
       // Si l'état est à "onEdit" alors text color primary sinon white
-      color: ${({ state }) =>
-        state == "onEdit" ? theme.colors.primary : theme.colors.white};
+      color: ${({ $state }) =>
+        $state == "onEdit" ? theme.colors.primary : theme.colors.white};
 
       // Si l'état est à "onEdit" alors bg-color white sinon primary
-      background-color: ${({ state }) =>
-        state == "onEdit" ? theme.colors.white : theme.colors.primary};
+      background-color: ${({ $state }) =>
+        $state == "onEdit" ? theme.colors.white : theme.colors.primary};
     }
   }
 `;
