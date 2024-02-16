@@ -9,13 +9,14 @@ import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { FiCheck } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../../../../../reusable-ui/Button";
 
 export default function Form({ setImageUrl, menuToEdit }) {
   const [submited, setSubmited] = useState(false);
   const { menus, setMenus } = useMenuContext();
-  const { register, handleSubmit, reset, watch, setValue } = useForm();
+  const { register, handleSubmit, reset, watch, setValue, setFocus } =
+    useForm();
 
   // Utilisation useEffect car setImageUrl(watch("url")) lève une erreur
   // Cf. https://stackoverflow.com/questions/62336340/cannot-update-a-component-while-rendering-a-different-component-warning
@@ -27,6 +28,7 @@ export default function Form({ setImageUrl, menuToEdit }) {
     setValue("name", menuToEdit.title);
     setValue("url", menuToEdit.imageSource);
     setValue("price", menuToEdit.price);
+    setFocus("name");
   }, [menuToEdit]);
 
   const onSubmit = (data) => {
