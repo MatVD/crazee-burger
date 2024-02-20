@@ -19,17 +19,17 @@ export const Main = () => {
 
   return (
     <MainStyled>
-      {/* <Basket /> */}
-      <div className="menu-and-admin">
-        <MenuContext.Provider
-          value={{ menus, setMenus, menuToEdit, setMenuToEdit }}
-        >
+      <MenuContext.Provider
+        value={{ menus, setMenus, menuToEdit, setMenuToEdit }}
+      >
+        {/* <Basket /> */}
+        <div className="menu-and-admin">
           <Menu />
           <ThemeContext.Provider value={themeContext}>
             {isAdminMode && <Admin />}
           </ThemeContext.Provider>
-        </MenuContext.Provider>
-      </div>
+        </div>
+      </MenuContext.Provider>
     </MainStyled>
   );
 };

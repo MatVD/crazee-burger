@@ -1,9 +1,5 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../assets/theme";
-import {
-  addMenu,
-  useMenuContext,
-} from "../../../../../../contexts/MenuContext";
 import { useForm } from "react-hook-form";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
@@ -13,10 +9,8 @@ import { useEffect, useRef, useState } from "react";
 import Button from "../../../../../reusable-ui/Button";
 
 export default function Form({ setImageUrl, menuToEdit }) {
-  const [submited, setSubmited] = useState(false);
-  const { menus, setMenus } = useMenuContext();
-  const { register, handleSubmit, reset, watch, setValue, setFocus } =
-    useForm();
+  const [submited] = useState(false);
+  const { register, handleSubmit, watch, setValue, setFocus } = useForm();
 
   // Utilisation useEffect car setImageUrl(watch("url")) lève une erreur
   // Cf. https://stackoverflow.com/questions/62336340/cannot-update-a-component-while-rendering-a-different-component-warning
@@ -31,16 +25,7 @@ export default function Form({ setImageUrl, menuToEdit }) {
     setFocus("name");
   }, [menuToEdit]);
 
-  const onSubmit = (data) => {
-    setSubmited(!submited);
-    const newMenus = addMenu(menus, data);
-    setMenus(newMenus);
-
-    setTimeout(() => {
-      setSubmited(false);
-      reset();
-    }, 2000);
-  };
+  const onSubmit = (data) => {};
 
   return (
     <FormStyled className="form" onSubmit={handleSubmit(onSubmit)}>
