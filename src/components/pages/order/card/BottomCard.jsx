@@ -45,13 +45,24 @@ const BottomCardStyled = styled.div`
     .CTAbutton {
       padding: 12px 25px 12px 25px;
 
-      // Si l'état est à "onEdit" alors text color primary sinon white
-      color: ${({ $state }) =>
-        $state == "onEdit" ? theme.colors.primary : theme.colors.white};
-
-      // Si l'état est à "onEdit" alors bg-color white sinon primary
-      background-color: ${({ $state }) =>
-        $state == "onEdit" ? theme.colors.white : theme.colors.primary};
+      // Si l'état est à "onEdit"
+      ${({ $state }) => ($state == "onEdit" ? btnOnEditStyle : btnNormalStyle)};
     }
+  }
+`;
+
+const btnNormalStyle = css`
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.primary};
+`;
+
+const btnOnEditStyle = css`
+  color: ${theme.colors.primary};
+  background-color: ${theme.colors.white};
+
+  &:hover {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.white};
   }
 `;

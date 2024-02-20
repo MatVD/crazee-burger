@@ -69,6 +69,10 @@ const isEditable = css`
 
 const onEdit = css`
   background-color: ${theme.colors.primary};
+
+  &:hover {
+    transform: scale(105%);
+  }
 `;
 
 const getState = {
