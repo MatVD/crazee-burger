@@ -53,19 +53,8 @@ export default function Form({ setImageUrl, menuToEdit }) {
           type="text"
         />
       </div>
-      <div className="wrapperBtn">
-        <Button
-          className={submited ? "addProductBtn submited" : "addProductBtn"}
-          type="submit"
-          icon={""}
-          label={"Ajouter un nouveau produit au menu"}
-          version="success"
-        />
-        {submited ? (
-          <div className="text-info">
-            <FiCheck className="checkIcon" /> <span>Ajouté avec succès !</span>
-          </div>
-        ) : null}
+      <div className="wrapperP">
+        <p>Cliquer sur un produit du menu pour le modifier en temps réel</p>
       </div>
     </FormStyled>
   );
@@ -114,33 +103,11 @@ const FormStyled = styled.form`
     grid-area: 3/1/4/4;
   }
 
-  .wrapperBtn {
+  .wrapperP {
     grid-area: 4/1/5/4;
 
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    .addProductBtn {
-      padding: 12px 20px;
-    }
-
-    .submited {
-      background-color: ${theme.colors.white};
-      color: ${theme.colors.success};
-      border: 1px solid ${theme.colors.success};
-    }
-
-    .text-info {
-      color: ${theme.colors.success};
-      display: flex;
-      align-items: center;
-      gap: 5px;
-
-      .checkIcon {
-        border: 1px solid ${theme.colors.success};
-        border-radius: ${theme.borderRadius.circle};
-      }
+    p {
+      color: ${theme.colors.primary};
     }
   }
 `;
