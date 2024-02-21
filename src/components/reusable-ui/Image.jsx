@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../assets/theme";
+import { useMenuContext } from "../../contexts/MenuContext";
 
-export default function Image({ src }) {
+export default function Image() {
+  const { menuToEdit } = useMenuContext();
   return (
     <ImageStyled>
-      {src !== "" ? (
-        <img src={src} alt="Image du produit" width={210} />
+      {menuToEdit?.imageSource != "" ? (
+        <img src={menuToEdit?.imageSource} alt="Image du produit" width={210} />
       ) : (
         <span>Aucune image</span>
       )}

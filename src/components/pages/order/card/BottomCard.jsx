@@ -2,13 +2,20 @@ import Button from "../../../reusable-ui/Button";
 import { formatPrice } from "../../../../utils/maths";
 import { css, styled } from "styled-components";
 import { theme } from "../../../../assets/theme";
+import { useMenuContext } from "../../../../contexts/MenuContext";
 
-export default function BottomCard({ price, title, state }) {
+export default function BottomCard({ price, title, state, id = 0 }) {
+  const { menuToEdit } = useMenuContext();
+
   return (
     <BottomCardStyled $state={state}>
-      <h2>{title}</h2>
+      <h2>{menuToEdit?.id == id ? menuToEdit.title : title}</h2>
       <div className="priceAndButton">
-        <p>{formatPrice(price)}</p>
+        <p>
+          {menuToEdit?.id == id
+            ? formatPrice(menuToEdit.price)
+            : formatPrice(price)}
+        </p>
         <Button label="Ajouter" className="CTAbutton" version="standard" />
       </div>
     </BottomCardStyled>

@@ -36,7 +36,7 @@ export default function Card({ id, imageSource, title, price, isAdminMode }) {
           isAdminMode={isAdminMode}
           state={cardState}
         />
-        <BottomCard price={price} title={title} state={cardState} />
+        <BottomCard price={price} title={title} state={cardState} id={id} />
       </CardStyled>
     </CardStateContext.Provider>
   );
