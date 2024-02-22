@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../assets/theme";
-import { useMenuContext } from "../../contexts/MenuContext";
 
-export default function Image() {
-  const { menuToEdit } = useMenuContext();
+export default function Image({ src }) {
   return (
     <ImageStyled>
-      {menuToEdit?.imageSource != "" ? (
-        <img src={menuToEdit?.imageSource} alt="Image du produit" width={210} />
+      {src ? (
+        <img src={src} alt="Image du produit" />
       ) : (
         <span>Aucune image</span>
       )}
@@ -18,15 +16,23 @@ export default function Image() {
 const ImageStyled = styled.div`
   grid-area: 1/1/4/2;
 
-  border: 1px solid ${theme.colors.greyLight};
-  border-radius: ${theme.borderRadius.round};
-  color: ${theme.colors.greyBlue};
-
   display: flex;
   justify-content: center;
   align-items: center;
 
+  span {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid ${theme.colors.greyLight};
+    border-radius: ${theme.borderRadius.round};
+    color: ${theme.colors.greyBlue};
+  }
+
   img {
     border-radius: ${theme.borderRadius.round};
+    height: 100%;
   }
 `;

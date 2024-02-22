@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../assets/theme";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
@@ -10,31 +10,32 @@ import {
 } from "../../../../../../contexts/MenuContext";
 import { useEffect } from "react";
 
-export default function Form() {
-  const { menuToEdit, setMenuToEdit } = useMenuContext();
+export default function Form({ setImageUrl }) {
+  const { menu, setMenu } = useMenuContext();
   const { register, setFocus, setValue, watch } = useForm({
     defaultValues: {
-      name: menuToEdit.title,
-      url: menuToEdit.imageSource,
-      price: menuToEdit.price,
+      name: menu.title,
+      url: menu.imageSource,
+      price: menu.price,
     },
   });
 
   useEffect(() => {
-    setValue("name", menuToEdit.title);
-    setValue("url", menuToEdit.imageSource);
-    setValue("price", menuToEdit.price);
-  }, [menuToEdit]);
+    setImageUrl(menu.imageSource);
+    setValue("name", menu.title);
+    setValue("url", menu.imageSource);
+    setValue("price", menu.price);
+  }, [menu]);
 
   useEffect(() => {
     const menuAfterEditing = editMenu(
-      menuToEdit,
+      menu,
       watch("name"),
       watch("url"),
       watch("price")
     );
 
-    setMenuToEdit(menuAfterEditing);
+    setMenu(menuAfterEditing);
   }, [watch("name"), watch("url"), watch("price")]);
 
   return (

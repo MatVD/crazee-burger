@@ -1,15 +1,17 @@
 import styled from "styled-components";
-import Form from "./Form";
-import { useState } from "react";
+import AddForm from "./AddForm";
+import { useEffect, useState } from "react";
 import Image from "../../../../../reusable-ui/Image";
+import { useMenuContext } from "../../../../../../contexts/MenuContext";
 
 export default function AddProductForm() {
+  const { menu } = useMenuContext();
   const [imageUrl, setImageUrl] = useState("");
 
   return (
     <AddProductFormStyled>
       <Image src={imageUrl} />
-      <Form setImageUrl={setImageUrl} />
+      <AddForm setImageUrl={setImageUrl} />
     </AddProductFormStyled>
   );
 }

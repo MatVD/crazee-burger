@@ -9,7 +9,7 @@ import { useAdminContext } from "../../../../contexts/AdminContext";
 import EditProductForm from "../main/panelAdmin/EditProductForm/EditProductForm";
 
 export default function Card({ id, imageSource, title, price, isAdminMode }) {
-  const { menus, setMenuToEdit } = useMenuContext();
+  const { menus, setMenu } = useMenuContext();
   const [cardState, setCardState] = useState("normal");
   const { setTabSelected, setIsOpen, setPanelContent } = useAdminContext();
 
@@ -19,7 +19,7 @@ export default function Card({ id, imageSource, title, price, isAdminMode }) {
   }, [isAdminMode]);
 
   const handleClick = () => {
-    setMenuToEdit(getMenu(menus, id));
+    setMenu(getMenu(menus, id));
     isAdminMode && setCardState("onEdit");
     setTabSelected("edit");
     setIsOpen(true);

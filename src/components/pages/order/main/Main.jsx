@@ -14,14 +14,12 @@ import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 export const Main = () => {
   const themeContext = useContext(ThemeContext);
   const [menus, setMenus] = useState(fakeMenu2);
-  const [menuToEdit, setMenuToEdit] = useState(null);
+  const [menu, setMenu] = useState(null);
   const { isAdminMode } = useAdminContext();
 
   return (
     <MainStyled>
-      <MenuContext.Provider
-        value={{ menus, setMenus, menuToEdit, setMenuToEdit }}
-      >
+      <MenuContext.Provider value={{ menus, setMenus, menu, setMenu }}>
         {/* <Basket /> */}
         <div className="menu-and-admin">
           <Menu />

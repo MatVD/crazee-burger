@@ -6,14 +6,15 @@ import Image from "../../../../../reusable-ui/Image";
 import EditForm from "./EditForm";
 
 export default function EditProductForm() {
-  const { menuToEdit } = useMenuContext();
+  const { menu } = useMenuContext();
+  const [imageUrl, setImageUrl] = useState("");
 
   return (
-    <EditProductFormStyled $menuToEdit={menuToEdit}>
-      {menuToEdit ? (
+    <EditProductFormStyled $menu={menu}>
+      {menu ? (
         <>
-          <Image />
-          <EditForm />
+          <Image src={imageUrl} />
+          <EditForm setImageUrl={setImageUrl} />
         </>
       ) : (
         <Message />
@@ -27,10 +28,10 @@ const EditProductFormStyled = styled.div`
   height: 190px;
   margin-left: 70px;
 
-  ${({ $menuToEdit }) => ($menuToEdit ? styleMenuToEdit : styleMessage)};
+  ${({ $menu }) => ($menu ? stylemenu : styleMessage)};
 `;
 
-const styleMenuToEdit = css`
+const stylemenu = css`
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);

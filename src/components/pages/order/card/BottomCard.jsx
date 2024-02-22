@@ -5,17 +5,13 @@ import { theme } from "../../../../assets/theme";
 import { useMenuContext } from "../../../../contexts/MenuContext";
 
 export default function BottomCard({ price, title, state, id = 0 }) {
-  const { menuToEdit } = useMenuContext();
+  const { menu } = useMenuContext();
 
   return (
     <BottomCardStyled $state={state}>
-      <h2>{menuToEdit?.id == id ? menuToEdit.title : title}</h2>
+      <h2>{menu?.id == id ? menu.title : title}</h2>
       <div className="priceAndButton">
-        <p>
-          {menuToEdit?.id == id
-            ? formatPrice(menuToEdit.price)
-            : formatPrice(price)}
-        </p>
+        <p>{menu?.id == id ? formatPrice(menu.price) : formatPrice(price)}</p>
         <Button label="Ajouter" className="CTAbutton" version="standard" />
       </div>
     </BottomCardStyled>

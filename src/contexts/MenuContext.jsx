@@ -5,7 +5,7 @@ import { createContext, useContext } from "react";
 const MenuContext = createContext({
   menus: [],
   setMenus: () => {},
-  menuToEdit: {
+  menu: {
     id: 0,
     imageSource: "",
     title: "",
@@ -14,14 +14,13 @@ const MenuContext = createContext({
     isAvailable: true,
     isAdvertised: false,
   },
-  setMenuToEdit: () => {},
+  setMenu: () => {},
 });
 
 export function useMenuContext() {
-  const { menus, setMenus, menuToEdit, setMenuToEdit } =
-    useContext(MenuContext);
+  const { menus, setMenus, menu, setMenu } = useContext(MenuContext);
 
-  return { menus, setMenus, menuToEdit, setMenuToEdit };
+  return { menus, setMenus, menu, setMenu };
 }
 
 export default MenuContext;
@@ -61,9 +60,9 @@ function getMenu(array, id) {
   return array.filter((menu) => menu.id === id)[0];
 }
 
-function editMenu(menuToEdit, title, imageSource, price) {
+function editMenu(menu, title, imageSource, price) {
   return {
-    ...menuToEdit,
+    ...menu,
     title: title,
     imageSource: imageSource,
     price: price,
