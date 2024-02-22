@@ -12,13 +12,11 @@ import { useEffect } from "react";
 
 export default function Form({ setImageUrl }) {
   const { menu, setMenu } = useMenuContext();
-  const { register, setFocus, setValue, watch } = useForm({
-    defaultValues: {
-      name: menu.title,
-      url: menu.imageSource,
-      price: menu.price,
-    },
-  });
+  const { register, setFocus, setValue, watch } = useForm();
+
+  useEffect(() => {
+    setFocus("name");
+  }, []);
 
   useEffect(() => {
     setImageUrl(menu.imageSource);
