@@ -2,7 +2,6 @@ import { css, styled } from "styled-components";
 import { theme } from "../../../../assets/theme";
 import TopCard from "./TopCard";
 import BottomCard from "./BottomCard";
-import CardStateContext from "../../../../contexts/CardStateContext";
 import { useEffect, useState } from "react";
 import { getMenu, useMenuContext } from "../../../../contexts/MenuContext";
 import { useAdminContext } from "../../../../contexts/AdminContext";
@@ -27,7 +26,6 @@ export default function Card({ id, imageSource, title, price, isAdminMode }) {
   };
 
   return (
-    <CardStateContext.Provider value={{ cardState, setCardState }}>
       <CardStyled onClick={handleClick} $state={cardState}>
         <TopCard
           image={imageSource}
@@ -38,7 +36,6 @@ export default function Card({ id, imageSource, title, price, isAdminMode }) {
         />
         <BottomCard price={price} title={title} state={cardState} id={id} />
       </CardStyled>
-    </CardStateContext.Provider>
   );
 }
 
