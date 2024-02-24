@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import Card from "../card/Card";
 import { theme } from "../../../../assets/theme";
-import { getMenu, useMenuContext } from "../../../../contexts/MenuContext";
+import { useMenuContext } from "../../../../contexts/MenuContext";
 import Empty from "./EmptyMenus";
 import { useAdminContext } from "../../../../contexts/AdminContext";
 import EditProductForm from "../main/panelAdmin/EditProductForm/EditProductForm";
@@ -10,11 +10,11 @@ import { useState } from "react";
 export default function Menu() {
   const [cardState, setCardState] = useState("normal");
   const { isAdminMode } = useAdminContext();
-  const { menus, setMenu } = useMenuContext();
+  const { menus, getMenu } = useMenuContext();
   const { setTabSelected, setIsOpen, setPanelContent } = useAdminContext();
 
   const handleClick = (id) => {
-    setMenu(getMenu(menus, id));
+    getMenu(menus, id);
     isAdminMode && setCardState("onEdit");
     setTabSelected("edit");
     setIsOpen(true);

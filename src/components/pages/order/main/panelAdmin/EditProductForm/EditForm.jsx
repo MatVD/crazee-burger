@@ -1,17 +1,14 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../assets/theme";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
-import {
-  editMenu,
-  useMenuContext,
-} from "../../../../../../contexts/MenuContext";
+import { useMenuContext } from "../../../../../../contexts/MenuContext";
 import { useEffect } from "react";
 
 export default function Form({ setImageUrl }) {
-  const { menu, setMenu } = useMenuContext();
+  const { menu, editMenu } = useMenuContext();
   const { register, setFocus, setValue, watch } = useForm();
 
   useEffect(() => {
@@ -25,23 +22,20 @@ export default function Form({ setImageUrl }) {
     setValue("price", menu.price);
   }, [menu]);
 
-  useEffect(() => {
-    const menuAfterEditing = editMenu(
-      menu,
-      watch("name"),
-      watch("url"),
-      watch("price")
-    );
+  const handleChange = () => {
+    const name = watch("name");
+    const url = watch("url");
+    const price = watch("price");
 
-    setMenu(menuAfterEditing);
-  }, [watch("name"), watch("url"), watch("price")]);
+    editMenu(menu, name, url, price);
+  };
 
   return (
     <FormStyled className="form">
       <div className="wrapper-input wrapper-input-1">
         <FaHamburger className="icon" />
         <input
-          {...register("name", { required: false })}
+          {...register("name", { required: false, onChange: handleChange })}
           placeholder="Nom du produit (ex. Super Burger)"
           type="text"
         />
@@ -49,7 +43,7 @@ export default function Form({ setImageUrl }) {
       <div className="wrapper-input wrapper-input-2">
         <BsFillCameraFill className="icon" />
         <input
-          {...register("url", { required: false })}
+          {...register("url", { required: false, onChange: handleChange })}
           placeholder="Lien URL de l'image (ex. https://photo-produit.png)"
           type="url"
         />
@@ -57,7 +51,7 @@ export default function Form({ setImageUrl }) {
       <div className="wrapper-input wrapper-input-3">
         <MdOutlineEuro className="icon" />
         <input
-          {...register("price", { required: false })}
+          {...register("price", { required: false, onChange: handleChange })}
           placeholder="Prix"
           type="text"
         />

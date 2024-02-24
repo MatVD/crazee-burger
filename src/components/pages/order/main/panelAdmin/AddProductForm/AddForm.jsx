@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../assets/theme";
-import {
-  addMenu,
-  useMenuContext,
-} from "../../../../../../contexts/MenuContext";
+import { useMenuContext } from "../../../../../../contexts/MenuContext";
 import { useForm } from "react-hook-form";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
@@ -14,7 +11,7 @@ import Button from "../../../../../reusable-ui/Button";
 
 export default function Form({ setImageUrl }) {
   const [submited, setSubmited] = useState(false);
-  const { menus, setMenus } = useMenuContext();
+  const { menus, addMenu } = useMenuContext();
   const { register, handleSubmit, reset, watch } = useForm({
     defaultValues: {
       name: "",
@@ -31,8 +28,7 @@ export default function Form({ setImageUrl }) {
 
   const onSubmit = (data) => {
     setSubmited(!submited);
-    const newMenus = addMenu(menus, data);
-    setMenus(newMenus);
+    addMenu(menus, data);
 
     setTimeout(() => {
       setSubmited(false);

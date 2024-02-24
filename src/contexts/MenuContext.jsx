@@ -1,4 +1,3 @@
-// Menu Context //
 import { createContext, useContext } from "react";
 
 const MenuContext = createContext({
@@ -8,10 +7,67 @@ const MenuContext = createContext({
   setMenu: () => {},
 });
 
+
 export function useMenuContext() {
   const { menus, setMenus, menu, setMenu } = useContext(MenuContext);
 
-  return { menus, setMenus, menu, setMenu };
+  // ----------- CRUD ------------ //
+  function getMenu(array, id) {
+    // Methode pour faire un deep clone de l'array
+    const arrayCopy = JSON.parse(JSON.stringify(array));
+
+    setMenu(arrayCopy.filter((menu) => menu.id === id)[0]);
+  }
+
+  function deleteMenu(array, id) {
+    const arrayCopy = JSON.parse(JSON.stringify(array));
+
+    setMenus(arrayCopy.filter((menu) => menu.id != id));
+  }
+
+  function addMenu(array, newMenu) {
+    const arrayCopy = JSON.parse(JSON.stringify(array));
+
+    const newMenus = [
+      {
+        id: arrayCopy.length + 1,
+        imageSource: newMenu.url,
+        title: newMenu.name,
+        price: newMenu.price,
+        quantity: 1,
+        isAvailable: true,
+        isAdvertised: false,
+      },
+      ...arrayCopy,
+    ];
+
+    setMenus(newMenus);
+  }
+
+  function editMenu(menu, title, imageSource, price) {
+    // Methode pour faire un deep clone du menu
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+
+    const menuEdited = {
+      ...menuCopy,
+      title: title,
+      imageSource: imageSource,
+      price: price,
+    };
+
+    setMenu(menuEdited);
+  }
+
+  return {
+    menus,
+    setMenus,
+    menu,
+    setMenu,
+    getMenu,
+    deleteMenu,
+    addMenu,
+    editMenu,
+  };
 }
 
 // export const MenuContextProvider = ({ Children }) => {
@@ -23,51 +79,4 @@ export function useMenuContext() {
 //   </MenuContext.Provider>;
 // };
 
-// --------- CRUD ---------- //
-
-function getMenu(array, id) {
-  // Methode pour faire un deep clone de l'array
-  const arrayCopy = JSON.parse(JSON.stringify(array));
-
-  return arrayCopy.filter((menu) => menu.id === id)[0];
-}
-
-function deleteMenu(array, id) {
-  // Methode pour faire un deep clone de l'array
-  const arrayCopy = JSON.parse(JSON.stringify(array));
-
-  return arrayCopy.filter((menu) => menu.id != id);
-}
-
-function addMenu(array, newMenu) {
-  // Methode pour faire un deep clone de l'array
-  const arrayCopy = JSON.parse(JSON.stringify(array));
-
-  return [
-    {
-      id: arrayCopy.length + 1,
-      imageSource: newMenu.url,
-      title: newMenu.name,
-      price: newMenu.price,
-      quantity: 1,
-      isAvailable: true,
-      isAdvertised: false,
-    },
-    ...arrayCopy,
-  ];
-}
-
-function editMenu(menu, title, imageSource, price) {
-  // Methode pour faire un deep clone du menu
-  const menuCopy = JSON.parse(JSON.stringify(menu));
-
-  return {
-    ...menuCopy,
-    title: title,
-    imageSource: imageSource,
-    price: price,
-  };
-}
-
-export { deleteMenu, addMenu, getMenu, editMenu };
 export default MenuContext;

@@ -1,14 +1,13 @@
 import { css, styled } from "styled-components";
 import { TiDelete } from "react-icons/ti";
 import { theme } from "../../../../assets/theme";
-import { deleteMenu, useMenuContext } from "../../../../contexts/MenuContext";
+import { useMenuContext } from "../../../../contexts/MenuContext";
 
 export default function TopCard({ image, title, id, isAdminMode, state }) {
-  const { menus, setMenus } = useMenuContext();
+  const { menus, deleteMenu } = useMenuContext();
 
   const handleClick = () => {
-    const newMenus = deleteMenu(menus, id);
-    setMenus(newMenus);
+    deleteMenu(menus, id);
   };
 
   return (
