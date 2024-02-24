@@ -14,8 +14,6 @@ export function useMenuContext() {
   return { menus, setMenus, menu, setMenu };
 }
 
-export default MenuContext;
-
 // export const MenuContextProvider = ({ Children }) => {
 //   const [menus, setMenus] = useState(fakeMenu2);
 //   const [menu, setMenu] = useState(PRODUCT);
@@ -25,14 +23,29 @@ export default MenuContext;
 //   </MenuContext.Provider>;
 // };
 
+// --------- CRUD ---------- //
+
+function getMenu(array, id) {
+  // Methode pour faire un deep clone de l'array
+  const arrayCopy = JSON.parse(JSON.stringify(array));
+
+  return arrayCopy.filter((menu) => menu.id === id)[0];
+}
+
 function deleteMenu(array, id) {
-  return array.filter((menu) => menu.id != id);
+  // Methode pour faire un deep clone de l'array
+  const arrayCopy = JSON.parse(JSON.stringify(array));
+
+  return arrayCopy.filter((menu) => menu.id != id);
 }
 
 function addMenu(array, newMenu) {
+  // Methode pour faire un deep clone de l'array
+  const arrayCopy = JSON.parse(JSON.stringify(array));
+
   return [
     {
-      id: array.length + 1,
+      id: arrayCopy.length + 1,
       imageSource: newMenu.url,
       title: newMenu.name,
       price: newMenu.price,
@@ -40,17 +53,16 @@ function addMenu(array, newMenu) {
       isAvailable: true,
       isAdvertised: false,
     },
-    ...array,
+    ...arrayCopy,
   ];
 }
 
-function getMenu(array, id) {
-  return array.filter((menu) => menu.id === id)[0];
-}
-
 function editMenu(menu, title, imageSource, price) {
+  // Methode pour faire un deep clone du menu
+  const menuCopy = JSON.parse(JSON.stringify(menu));
+
   return {
-    ...menu,
+    ...menuCopy,
     title: title,
     imageSource: imageSource,
     price: price,
@@ -58,3 +70,4 @@ function editMenu(menu, title, imageSource, price) {
 }
 
 export { deleteMenu, addMenu, getMenu, editMenu };
+export default MenuContext;
