@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import createDeepClone from "../utils/createDeepClone.js";
 
 const MenuContext = createContext({
   menus: [],
@@ -6,7 +7,6 @@ const MenuContext = createContext({
   menu: {},
   setMenu: () => {},
 });
-
 
 export function useMenuContext() {
   const { menus, setMenus, menu, setMenu } = useContext(MenuContext);
@@ -20,13 +20,13 @@ export function useMenuContext() {
   }
 
   function deleteMenu(array, id) {
-    const arrayCopy = JSON.parse(JSON.stringify(array));
+    const arrayCopy = createDeepClone(array);
 
     setMenus(arrayCopy.filter((menu) => menu.id != id));
   }
 
   function addMenu(array, newMenu) {
-    const arrayCopy = JSON.parse(JSON.stringify(array));
+    const arrayCopy = createDeepClone(array);
 
     const newMenus = [
       {
@@ -46,7 +46,7 @@ export function useMenuContext() {
 
   function editMenu(menu, title, imageSource, price) {
     // Methode pour faire un deep clone du menu
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = createDeepClone(menu);
 
     const menuEdited = {
       ...menuCopy,
