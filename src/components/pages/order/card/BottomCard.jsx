@@ -4,11 +4,11 @@ import { css, styled } from "styled-components";
 import { theme } from "../../../../assets/theme";
 import { useMenuContext } from "../../../../contexts/MenuContext";
 
-export default function BottomCard({ price, title, state, id = 0 }) {
+export default function BottomCard({ price, title, id, onEdit }) {
   const { menu } = useMenuContext();
 
   return (
-    <BottomCardStyled $state={state}>
+    <BottomCardStyled $onEdit={onEdit}>
       <h2>{menu?.id == id ? menu.title : title}</h2>
       <div className="priceAndButton">
         <p>{menu?.id == id ? formatPrice(menu.price) : formatPrice(price)}</p>
@@ -41,31 +41,18 @@ const BottomCardStyled = styled.div`
 
     p {
       // Si l'état est à "onEdit" alors text color white sinon primary
-      color: ${({ $state }) =>
-        $state == "onEdit" ? theme.colors.white : theme.colors.primary};
+      color: ${({ $onEdit }) =>
+        $onEdit ? theme.colors.white : theme.colors.primary};
     }
 
     .CTAbutton {
       padding: 12px 25px 12px 25px;
 
-      // Si l'état est à "onEdit"
-      ${({ $state }) => ($state == "onEdit" ? btnOnEditStyle : btnNormalStyle)};
+      color: ${({ $onEdit }) =>
+        $onEdit ? theme.colors.primary : theme.colors.white};
+
+      background-color: ${({ $onEdit }) =>
+        $onEdit ? theme.colors.white : theme.colors.primary};
     }
-  }
-`;
-
-const btnNormalStyle = css`
-  color: ${theme.colors.white};
-  background-color: ${theme.colors.primary};
-`;
-
-const btnOnEditStyle = css`
-  color: ${theme.colors.primary};
-  background-color: ${theme.colors.white};
-
-  &:hover {
-    background-color: ${theme.colors.primary};
-    color: ${theme.colors.white};
-    border: 1px solid ${theme.colors.white};
   }
 `;

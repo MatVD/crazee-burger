@@ -2,7 +2,6 @@ import { css, styled } from "styled-components";
 import { theme } from "../../../../assets/theme";
 import TopCard from "./TopCard";
 import BottomCard from "./BottomCard";
-import { useEffect } from "react";
 
 export default function Card({
   id,
@@ -11,24 +10,19 @@ export default function Card({
   price,
   isAdminMode,
   onClick,
-  cardState,
-  setCardState,
+  onHover,
+  onEdit,
 }) {
-  useEffect(() => {
-    isAdminMode && setCardState("isEditable");
-    !isAdminMode && setCardState("normal");
-  }, [isAdminMode]);
-
   return (
-    <CardStyled onClick={() => onClick(id)} $state={cardState}>
+    <CardStyled onClick={() => onClick(id)} $onHover={onHover} $onEdit={onEdit}>
       <TopCard
         image={imageSource}
         title={title}
         id={id}
         isAdminMode={isAdminMode}
-        state={cardState}
+        onEdit={onEdit}
       />
-      <BottomCard price={price} title={title} state={cardState} id={id} />
+      <BottomCard price={price} title={title} id={id} onEdit={onEdit}/>
     </CardStyled>
   );
 }
@@ -47,27 +41,18 @@ const CardStyled = styled.div`
   padding: 50px 20px 10px 20px;
   border-radius: ${theme.borderRadius.extraRound};
 
-  ${({ $state }) => getState[$state]}
+  ${({ $onHover }) => $onHover && onHover}
+  ${({ $onEdit }) => $onEdit && onEdit}
 `;
 
-const isEditable = css`
+const onHover = css`
   &:hover {
-    cursor: pointer;
-    border: 1px solid ${theme.colors.primary};
     transform: scale(105%);
+    cursor: pointer;
+    box-shadow: 0 0 10px 1px ${theme.colors.primary};
   }
 `;
 
 const onEdit = css`
-  background-color: ${theme.colors.primary};
-
-  &:hover {
-    transform: scale(105%);
-    cursor: pointer;
-  }
+  background: orange;
 `;
-
-const getState = {
-  isEditable,
-  onEdit,
-};

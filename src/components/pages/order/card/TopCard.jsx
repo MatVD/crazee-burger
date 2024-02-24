@@ -3,7 +3,7 @@ import { TiDelete } from "react-icons/ti";
 import { theme } from "../../../../assets/theme";
 import { useMenuContext } from "../../../../contexts/MenuContext";
 
-export default function TopCard({ image, title, id, isAdminMode, state }) {
+export default function TopCard({ image, title, id, isAdminMode, onEdit }) {
   const { menus, deleteMenu } = useMenuContext();
 
   const handleClick = () => {
@@ -11,7 +11,7 @@ export default function TopCard({ image, title, id, isAdminMode, state }) {
   };
 
   return (
-    <TopCardStyled $state={state}>
+    <TopCardStyled $onEdit={onEdit}>
       {isAdminMode && <TiDelete className="delete" onClick={handleClick} />}
       <img
         src={image ? image : "/images/coming-soon.png"}
@@ -36,9 +36,9 @@ const TopCardStyled = styled.div`
     right: 20px;
     width: 20px;
     height: 20px;
-    color: ${theme.colors.primary};
 
-    ${({ $state }) => getSate[$state]}
+    color: ${({ $onEdit }) =>
+      $onEdit ? theme.colors.white : theme.colors.primary};
 
     &:hover {
       cursor: pointer;
@@ -52,11 +52,3 @@ const TopCardStyled = styled.div`
     border-radius: ${theme.borderRadius.round};
   }
 `;
-
-const onEdit = css`
-  color: ${theme.colors.white};
-`;
-
-const getSate = {
-  onEdit,
-};

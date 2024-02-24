@@ -5,17 +5,14 @@ import { useMenuContext } from "../../../../contexts/MenuContext";
 import Empty from "./EmptyMenus";
 import { useAdminContext } from "../../../../contexts/AdminContext";
 import EditProductForm from "../main/panelAdmin/EditProductForm/EditProductForm";
-import { useState } from "react";
 
 export default function Menu() {
-  const [cardState, setCardState] = useState("normal");
   const { isAdminMode } = useAdminContext();
-  const { menus, getMenu } = useMenuContext();
+  const { menus, getMenu, menu } = useMenuContext();
   const { setTabSelected, setIsOpen, setPanelContent } = useAdminContext();
 
   const handleClick = (id) => {
     getMenu(menus, id);
-    isAdminMode && setCardState("onEdit");
     setTabSelected("edit");
     setIsOpen(true);
     setPanelContent(<EditProductForm />);
@@ -26,17 +23,17 @@ export default function Menu() {
       {menus.length < 1 ? (
         <Empty admin={isAdminMode} />
       ) : (
-        menus.map((menu) => (
+        menus.map((card) => (
           <Card
-            key={menu.id}
-            id={menu.id}
-            imageSource={menu.imageSource}
-            title={menu.title}
-            price={menu.price}
+            key={card.id}
+            id={card.id}
+            imageSource={card.imageSource}
+            title={card.title}
+            price={card.price}
             isAdminMode={isAdminMode}
             onClick={handleClick}
-            cardState={cardState}
-            setCardState={setCardState}
+            onHover={isAdminMode}
+            onEdit={card.id === menu.id}
           />
         ))
       )}
