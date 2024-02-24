@@ -2,40 +2,34 @@ import { css, styled } from "styled-components";
 import { theme } from "../../../../assets/theme";
 import TopCard from "./TopCard";
 import BottomCard from "./BottomCard";
-import { useEffect, useState } from "react";
-import { getMenu, useMenuContext } from "../../../../contexts/MenuContext";
-import { useAdminContext } from "../../../../contexts/AdminContext";
-import EditProductForm from "../main/panelAdmin/EditProductForm/EditProductForm";
+import { useEffect } from "react";
 
-export default function Card({ id, imageSource, title, price, isAdminMode }) {
-  const { menus, setMenu } = useMenuContext();
-  const [cardState, setCardState] = useState("normal");
-  const { setTabSelected, setIsOpen, setPanelContent } = useAdminContext();
-
+export default function Card({
+  id,
+  imageSource,
+  title,
+  price,
+  isAdminMode,
+  onClick,
+  cardState,
+  setCardState,
+}) {
   useEffect(() => {
     isAdminMode && setCardState("isEditable");
     !isAdminMode && setCardState("normal");
   }, [isAdminMode]);
 
-  const handleClick = () => {
-    setMenu(getMenu(menus, id));
-    isAdminMode && setCardState("onEdit");
-    setTabSelected("edit");
-    setIsOpen(true);
-    setPanelContent(<EditProductForm />);
-  };
-
   return (
-      <CardStyled onClick={handleClick} $state={cardState}>
-        <TopCard
-          image={imageSource}
-          title={title}
-          id={id}
-          isAdminMode={isAdminMode}
-          state={cardState}
-        />
-        <BottomCard price={price} title={title} state={cardState} id={id} />
-      </CardStyled>
+    <CardStyled onClick={() => onClick(id)} $state={cardState}>
+      <TopCard
+        image={imageSource}
+        title={title}
+        id={id}
+        isAdminMode={isAdminMode}
+        state={cardState}
+      />
+      <BottomCard price={price} title={title} state={cardState} id={id} />
+    </CardStyled>
   );
 }
 
@@ -69,6 +63,7 @@ const onEdit = css`
 
   &:hover {
     transform: scale(105%);
+    cursor: pointer;
   }
 `;
 

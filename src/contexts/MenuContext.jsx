@@ -1,19 +1,10 @@
 // Menu Context //
-
 import { createContext, useContext } from "react";
 
 const MenuContext = createContext({
   menus: [],
   setMenus: () => {},
-  menu: {
-    id: 0,
-    imageSource: "",
-    title: "",
-    price: "",
-    quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
-  },
+  menu: {},
   setMenu: () => {},
 });
 
@@ -25,17 +16,14 @@ export function useMenuContext() {
 
 export default MenuContext;
 
-// export default function MenuContextProvider({ children }) {
+// export const MenuContextProvider = ({ Children }) => {
 //   const [menus, setMenus] = useState(fakeMenu2);
+//   const [menu, setMenu] = useState(PRODUCT);
 
-//   useEffect(() => {
-//     setMenus(fakeMenu2);
-//   }, [menus]);
-
-//   <MenuContext.Provider value={{ menus, setMenus }}>
-//     {children}
+//   <MenuContext.Provider value={{ menus, setMenus, menu, setMenu }}>
+//     {Children}
 //   </MenuContext.Provider>;
-// }
+// };
 
 function deleteMenu(array, id) {
   return array.filter((menu) => menu.id != id);

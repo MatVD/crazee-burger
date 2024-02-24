@@ -2,20 +2,19 @@ import { styled } from "styled-components";
 import { theme } from "../../../../assets/theme/index";
 import Basket from "./Basket";
 import Menu from "./Menu";
-import { useContext, useState } from "react";
 import Admin from "./panelAdmin/Admin";
 import ThemeContext from "../../../../contexts/themeContext";
-import AdminContext, {
-  useAdminContext,
-} from "../../../../contexts/AdminContext";
+import { useAdminContext } from "../../../../contexts/AdminContext";
+import { useContext, useState } from "react";
 import MenuContext from "../../../../contexts/MenuContext";
+import PRODUCT from "../../../../enums/product";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 
 export const Main = () => {
+  const { isAdminMode } = useAdminContext();
   const themeContext = useContext(ThemeContext);
   const [menus, setMenus] = useState(fakeMenu2);
-  const [menu, setMenu] = useState(null);
-  const { isAdminMode } = useAdminContext();
+  const [menu, setMenu] = useState(PRODUCT);
 
   return (
     <MainStyled>
