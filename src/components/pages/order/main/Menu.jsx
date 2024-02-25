@@ -33,7 +33,7 @@ export default function Menu() {
             isAdminMode={isAdminMode}
             onClick={handleClick}
             onHover={isAdminMode}
-            onEdit={card.id === menu.id}
+            onEdit={card.id === menu?.id}
           />
         ))
       )}
