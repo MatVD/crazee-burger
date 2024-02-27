@@ -7,9 +7,15 @@ export default function Button({
   className,
   version = "standard",
   type,
+  onClick,
 }) {
   return (
-    <StyledButton className={className} version={version} type={type}>
+    <StyledButton
+      className={className}
+      version={version}
+      type={type}
+      onClick={(e) => onClick(e)}
+    >
       {label} {icon && icon}
     </StyledButton>
   );

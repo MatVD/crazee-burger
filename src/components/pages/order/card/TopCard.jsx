@@ -6,13 +6,16 @@ import { useMenuContext } from "../../../../contexts/MenuContext";
 export default function TopCard({ image, title, id, isAdminMode, onEdit }) {
   const { menus, deleteMenu } = useMenuContext();
 
-  const handleClick = () => {
+  const handleDelete = (e) => {
+    e.stopPropagation();
     deleteMenu(menus, id);
   };
 
   return (
     <TopCardStyled $onEdit={onEdit}>
-      {isAdminMode && <TiDelete className="delete" onClick={handleClick} />}
+      {isAdminMode && (
+        <TiDelete className="delete" onClick={(e) => handleDelete(e)} />
+      )}
       <img
         src={image ? image : "/images/coming-soon.png"}
         alt={`Image du ${title}`}
