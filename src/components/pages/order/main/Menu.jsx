@@ -12,10 +12,12 @@ export default function Menu() {
   const { setTabSelected, setIsOpen, setPanelContent } = useAdminContext();
 
   const handleClick = (id) => {
-    getMenu(menus, id);
-    setTabSelected("edit");
-    setIsOpen(true);
-    setPanelContent(<EditProductForm />);
+    if (isAdminMode) {
+      getMenu(menus, id);
+      setTabSelected("edit");
+      setIsOpen(true);
+      setPanelContent(<EditProductForm />);
+    }
   };
 
   return (
@@ -33,7 +35,7 @@ export default function Menu() {
             isAdminMode={isAdminMode}
             onClick={handleClick}
             onHover={isAdminMode}
-            onEdit={card.id === menu?.id}
+            onEdit={isAdminMode && card.id === menu?.id}
           />
         ))
       )}
