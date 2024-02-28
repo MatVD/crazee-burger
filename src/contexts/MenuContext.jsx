@@ -4,19 +4,20 @@ import createDeepClone from "../utils/createDeepClone.js";
 const MenuContext = createContext({
   menus: [],
   setMenus: () => {},
-  menu: {},
-  setMenu: () => {},
+  selectedMenu: {},
+  setSelectedMenu: () => {},
 });
 
 export function useMenuContext() {
-  const { menus, setMenus, menu, setMenu } = useContext(MenuContext);
+  const { menus, setMenus, selectedMenu, setSelectedMenu } =
+    useContext(MenuContext);
 
   // ----------- CRUD ------------ //
   function getMenu(array, id) {
     // Methode pour faire un deep clone de l'array
-    const arrayCopy = JSON.parse(JSON.stringify(array));
+    const arrayCopy = createDeepClone(array);
 
-    setMenu(arrayCopy.filter((menu) => menu.id === id)[0]);
+    return arrayCopy.filter((menu) => menu.id === id)[0];
   }
 
   function deleteMenu(array, id) {
@@ -44,26 +45,30 @@ export function useMenuContext() {
     setMenus(newMenus);
   }
 
-  function editMenu(menu, title, imageSource, price) {
+  function editMenu(menuToEdit, title, imageSource, price) {
     // Methode pour faire un deep clone du menu
-    const menuCopy = createDeepClone(menu);
+    const menusCopy = createDeepClone(menus);
 
-    const menuEdited = {
-      ...menuCopy,
+    const indexOfMenuToEdit = menus.findIndex(
+      (menu) => menu.id === menuToEdit.id
+    );
+
+    menusCopy[indexOfMenuToEdit] = {
+      ...menuToEdit,
       title: title,
       imageSource: imageSource,
       price: price,
     };
 
-    setMenu(menuEdited);
+    setMenus(menusCopy);
   }
 
   return {
     menus,
     setMenus,
-    menu,
-    setMenu,
     getMenu,
+    selectedMenu,
+    setSelectedMenu,
     deleteMenu,
     addMenu,
     editMenu,

@@ -7,10 +7,6 @@ import { useMenuContext } from "../../../../contexts/MenuContext";
 export default function BottomCard({ price, title, id, onEdit }) {
   const { menu } = useMenuContext();
 
-  const handleClick = (e) => {
-    e.stopPropagation();
-  };
-
   return (
     <BottomCardStyled $onEdit={onEdit}>
       <h2>{menu?.id == id ? menu.title : title}</h2>
@@ -20,7 +16,7 @@ export default function BottomCard({ price, title, id, onEdit }) {
           label="Ajouter"
           className="CTAbutton"
           version="standard"
-          onClick={handleClick}
+          onClick={(e) => e.stopPropagation()}
         />
       </div>
     </BottomCardStyled>

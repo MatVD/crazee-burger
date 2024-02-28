@@ -8,30 +8,26 @@ import { useMenuContext } from "../../../../../../contexts/MenuContext";
 import { useEffect } from "react";
 
 export default function Form({ setImageUrl }) {
-  const { menu, editMenu } = useMenuContext();
+  const { selectedMenu, editMenu } = useMenuContext();
   const { register, setFocus, setValue, watch } = useForm();
 
   useEffect(() => {
-    setFocus("name");
-  }, []);
-
-  useEffect(() => {
-    setImageUrl(menu.imageSource);
-    setValue("name", menu.title);
-    setValue("url", menu.imageSource);
-    setValue("price", menu.price);
-  }, [menu]);
+    setImageUrl(selectedMenu.imageSource);
+    setValue("name", selectedMenu.title);
+    setValue("url", selectedMenu.imageSource);
+    setValue("price", selectedMenu.price);
+  }, [selectedMenu]);
 
   const handleChange = () => {
     const name = watch("name");
     const url = watch("url");
     const price = watch("price");
 
-    editMenu(menu, name, url, price);
+    editMenu(selectedMenu, name, url, price);
   };
 
   return (
-    <FormStyled className="form">
+    <FormStyled className="form" onLoad={setFocus("name")}>
       <div className="wrapper-input wrapper-input-1">
         <FaHamburger className="icon" />
         <input

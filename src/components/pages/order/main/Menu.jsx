@@ -8,12 +8,12 @@ import EditProductForm from "../main/panelAdmin/EditProductForm/EditProductForm"
 
 export default function Menu() {
   const { isAdminMode } = useAdminContext();
-  const { menus, getMenu, menu } = useMenuContext();
+  const { menus, getMenu, selectedMenu, setSelectedMenu } = useMenuContext();
   const { setTabSelected, setIsOpen, setPanelContent } = useAdminContext();
 
   const handleClick = (id) => {
     if (isAdminMode) {
-      getMenu(menus, id);
+      setSelectedMenu(getMenu(menus, id));
       setTabSelected("edit");
       setIsOpen(true);
       setPanelContent(<EditProductForm />);
@@ -35,7 +35,7 @@ export default function Menu() {
             isAdminMode={isAdminMode}
             onClick={handleClick}
             onHover={isAdminMode}
-            onEdit={isAdminMode && card.id === menu?.id}
+            onEdit={isAdminMode && card.id === selectedMenu?.id}
           />
         ))
       )}
