@@ -23,9 +23,9 @@ export function useMenuContext() {
   function deleteMenu(array, id) {
     const arrayCopy = createDeepClone(array);
 
-    setSelectedMenu(null);
+    const menuToDelete = arrayCopy.filter((menu) => menu.id != id);
 
-    setMenus(arrayCopy.filter((menu) => menu.id != id));
+    setMenus(menuToDelete);
   }
 
   function addMenu(array, newMenu) {

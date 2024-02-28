@@ -4,11 +4,12 @@ import { theme } from "../../../../assets/theme";
 import { useMenuContext } from "../../../../contexts/MenuContext";
 
 export default function TopCard({ image, title, id, isAdminMode, onEdit }) {
-  const { menus, deleteMenu } = useMenuContext();
+  const { menus, deleteMenu, selectedMenu, setSelectedMenu } = useMenuContext();
 
   const handleDelete = (e) => {
     e.stopPropagation();
     deleteMenu(menus, id);
+    selectedMenu.id === id && setSelectedMenu(null);
   };
 
   return (
