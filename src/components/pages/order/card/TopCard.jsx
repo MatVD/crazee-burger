@@ -13,9 +13,7 @@ export default function TopCard({ image, title, id, isAdminMode, onEdit }) {
 
   return (
     <TopCardStyled $onEdit={onEdit}>
-      {isAdminMode && (
-        <TiDelete className="delete" onClick={(e) => handleDelete(e)} />
-      )}
+      {isAdminMode && <TiDelete className="delete" onClick={handleDelete} />}
       <img
         src={image ? image : "/images/coming-soon.png"}
         alt={`Image du ${title}`}
