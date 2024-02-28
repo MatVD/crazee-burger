@@ -14,7 +14,7 @@ export const Main = () => {
   const { isAdminMode } = useAdminContext();
   const themeContext = useContext(ThemeContext);
   const [menus, setMenus] = useState(fakeMenu2);
-  const [selectedMenu, setSelectedMenu] = useState(null);
+  const [selectedMenu, setSelectedMenu] = useState(PRODUCT);
 
   return (
     <MainStyled>

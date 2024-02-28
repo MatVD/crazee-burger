@@ -7,12 +7,11 @@ import { MdOutlineEuro } from "react-icons/md";
 import { useMenuContext } from "../../../../../../contexts/MenuContext";
 import { useEffect } from "react";
 
-export default function Form({ setImageUrl }) {
-  const { selectedMenu, editMenu } = useMenuContext();
+export default function Form() {
+  const { selectedMenu, setSelectedMenu, editMenu } = useMenuContext();
   const { register, setFocus, setValue, watch } = useForm();
 
   useEffect(() => {
-    setImageUrl(selectedMenu.imageSource);
     setValue("name", selectedMenu.title);
     setValue("url", selectedMenu.imageSource);
     setValue("price", selectedMenu.price);
@@ -24,6 +23,7 @@ export default function Form({ setImageUrl }) {
     const price = watch("price");
 
     editMenu(selectedMenu, name, url, price);
+    setSelectedMenu({ ...selectedMenu, imageSource: url });
   };
 
   return (

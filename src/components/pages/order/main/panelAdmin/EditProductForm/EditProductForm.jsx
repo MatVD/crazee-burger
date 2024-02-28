@@ -7,14 +7,13 @@ import EditForm from "./EditForm";
 
 export default function EditProductForm() {
   const { selectedMenu } = useMenuContext();
-  const [imageUrl, setImageUrl] = useState("");
 
   return (
-    <EditProductFormStyled $menu={selectedMenu}>
-      {selectedMenu ? (
+    <EditProductFormStyled $menu={selectedMenu.id != ""}>
+      {selectedMenu.id != "" ? (
         <>
-          <Image src={imageUrl} />
-          <EditForm setImageUrl={setImageUrl} />
+          <Image src={selectedMenu?.imageSource} />
+          <EditForm />
         </>
       ) : (
         <Message />
