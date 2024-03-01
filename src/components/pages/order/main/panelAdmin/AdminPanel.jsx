@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../../assets/theme";
+import { useAdminContext } from "../../../../../contexts/AdminContext";
 
-export const AdminPanel = ({ content, isOpen }) => {
-  return <AdminPanelStyled $isOpen={isOpen}>{content}</AdminPanelStyled>;
+export const AdminPanel = () => {
+  const { panelContent, isOpen } = useAdminContext();
+
+  return <AdminPanelStyled $isOpen={isOpen}>{panelContent}</AdminPanelStyled>;
 };
 
 const AdminPanelStyled = styled.div`

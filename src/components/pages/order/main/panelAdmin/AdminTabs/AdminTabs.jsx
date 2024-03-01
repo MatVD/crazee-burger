@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { getTabsConfig } from "./tabsConfig";
 import { useAdminContext } from "../../../../../../contexts/AdminContext";
 
-const AdminTabs = ({ setPanelContent, isOpen, setIsOpen }) => {
-  const { tabSelected, setTabSelected } = useAdminContext();
+const AdminTabs = () => {
+  const { tabSelected, setTabSelected, setPanelContent, isOpen, setIsOpen  } = useAdminContext();
 
   const handleClick = (content, index) => {
     setPanelContent(content);

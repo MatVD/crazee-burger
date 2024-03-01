@@ -1,20 +1,12 @@
 import styled from "styled-components";
 import AdminTabs from "./AdminTabs/AdminTabs";
 import { AdminPanel } from "./AdminPanel";
-import { useAdminContext } from "../../../../../contexts/AdminContext";
 
 const Admin = () => {
-  const { panelContent, setPanelContent } = useAdminContext();
-  const { isOpen, setIsOpen } = useAdminContext();
-
   return (
     <AdminStyled>
-      <AdminTabs
-        setPanelContent={setPanelContent}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
-      <AdminPanel content={panelContent} isOpen={isOpen} />
+      <AdminTabs />
+      <AdminPanel />
     </AdminStyled>
   );
 };
