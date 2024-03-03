@@ -79,7 +79,7 @@ export function useMenuContext() {
 
 // export const MenuContextProvider = ({ Children }) => {
 //   const [menus, setMenus] = useState(fakeMenu2);
-//   const [menu, setMenu] = useState(PRODUCT);
+//   const [menu, setMenu] = useState(EMPTY_PRODUCT);
 
 //   <MenuContext.Provider value={{ menus, setMenus, menu, setMenu }}>
 //     {Children}

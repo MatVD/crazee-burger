@@ -1,22 +1,22 @@
 import styled, { css } from "styled-components";
 import Message from "./Message";
 import { useMenuContext } from "../../../../../../contexts/MenuContext";
-import { useState } from "react";
 import Image from "../../../../../reusable-ui/Image";
 import EditForm from "./EditForm";
+import EMPTY_PRODUCT from "../../../../../../enums/product";
 
 export default function EditProductForm() {
   const { selectedMenu } = useMenuContext();
 
   return (
-    <EditProductFormStyled $menu={selectedMenu.id != ""}>
-      {selectedMenu.id != "" ? (
+    <EditProductFormStyled $menu={selectedMenu !== EMPTY_PRODUCT}>
+      {selectedMenu === EMPTY_PRODUCT ? (
+        <Message />
+      ) : (
         <>
           <Image src={selectedMenu?.imageSource} />
           <EditForm />
         </>
-      ) : (
-        <Message />
       )}
     </EditProductFormStyled>
   );

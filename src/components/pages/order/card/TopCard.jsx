@@ -2,6 +2,7 @@ import { css, styled } from "styled-components";
 import { TiDelete } from "react-icons/ti";
 import { theme } from "../../../../assets/theme";
 import { useMenuContext } from "../../../../contexts/MenuContext";
+import EMPTY_PRODUCT from "../../../../enums/product";
 
 export default function TopCard({ image, title, id, isAdminMode, onEdit }) {
   const { menus, deleteMenu, selectedMenu, setSelectedMenu } = useMenuContext();
@@ -9,7 +10,7 @@ export default function TopCard({ image, title, id, isAdminMode, onEdit }) {
   const handleDelete = (e) => {
     e.stopPropagation();
     deleteMenu(menus, id);
-    selectedMenu.id === id && setSelectedMenu(null);
+    selectedMenu.id === id && setSelectedMenu(EMPTY_PRODUCT);
   };
 
   return (

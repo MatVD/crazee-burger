@@ -7,14 +7,14 @@ import ThemeContext from "../../../../contexts/themeContext";
 import { useAdminContext } from "../../../../contexts/AdminContext";
 import { useContext, useState } from "react";
 import MenuContext from "../../../../contexts/MenuContext";
-import PRODUCT from "../../../../enums/product";
+import EMPTY_PRODUCT from "../../../../enums/product";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 
 export const Main = () => {
   const { isAdminMode } = useAdminContext();
   const themeContext = useContext(ThemeContext);
   const [menus, setMenus] = useState(fakeMenu2);
-  const [selectedMenu, setSelectedMenu] = useState(PRODUCT);
+  const [selectedMenu, setSelectedMenu] = useState(EMPTY_PRODUCT);
 
   return (
     <MainStyled>
