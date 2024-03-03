@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { theme } from "../../assets/theme";
-import { useMenuContext } from "../../contexts/MenuContext";
 
-export default function Image() {
-  const { selectedMenu } = useMenuContext();
-  
+export default function Image({ src }) {
   return (
     <ImageStyled>
-      {selectedMenu ? (
-        <img src={selectedMenu.imageSource} alt="Image du produit" />
+      {src ? (
+        <img
+          src={src}
+          alt="Image du produit"
+        />
       ) : (
         <span>Aucune image</span>
       )}
